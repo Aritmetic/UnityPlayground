@@ -1,0 +1,109 @@
+CHANGELOG for NWH Vehicle Physics
+
+
+v1.6
+------------------------------
+Fixed vehicles jumping / flying into the air under some specific circumstances.
+Add option to freeze the vehicle when inactive.
+Improved tracked vehicles.
+Added Damage.Repair() function.
+Fixed bug where Mobile Input Manager would throw error if Vehicle Controller was not assigned, and Vehicle Changer was.
+Vehicles with larger wheels sometimes hesitate when changing from reverse to first gear.
+Error when detaching the trailer in some cases.
+Solved emissive meshes not emitting in demo scene build (thank you SilverSho0t).
+Fixed RPM being off on the RPM gauge inside the demo scene.
+Remove leftover tutorial scene.
+Removed delay when shifting from reverse to forward.
+
+
+v1.5
+------------------------------
+Changed the look of demo scene and added new auto-generated telemetry and settings menus.
+Added unit converter with common conversions.
+Fixed fuel consumption calculation which would result in too high fuel consumption.
+Added per-vehicle option for skidmark textures.
+Metrics system that provides values such as drift time, top speed, average speed, …
+Removed “skidSmoothing” field for skid sound component and changed the way skid sound is calculated.
+Added vehicle braking when still and not throttle applied.
+Fixed trailer not being attachable in demo scene due to the wrong trailer tag.
+Option for reverse lights.
+Changed code for stability assist to allow for drifting at lower settings
+Added drift assist.
+Changed the name of Driving Aid to Driving Assist
+Updated manual.
+
+
+v1.4
+------------------------------
+Tracked vehicle support along with a new demo vehicle - Type 10 MBT.
+Fixed a bug where axle RPM would be reported incorrectly resulting in vehicles having less power and requiring lower final gear ratio.
+Improved lateral friction calculation - eliminated high speed instability.
+Fixed Automatic transmission staying  in 2nd gear instead of changing to 1st in some cases.
+Changed the way low beam / high beam light switching works.
+Added ‘Ignore Tags’ field to the damage handler. Collisions with the objects that have a tag that is on this list will be ignored.
+Added performance degradation option under damage. Engine, steering and sound will only be affected by damage if this option is enabled.
+Removed steer smoothing and replaced it with Degrees Per Second Limit which limits the amount of degrees wheels can turn per second. 
+Fixed clutch being applied while braking in 1st gear and going forward.
+Improved gear skipping in auto gearbox.
+Skidmarks sometimes not drawn.
+Skidmarks sometimes drawn in air / over other objects.
+Improved response to drivetrain RPM changes.
+Sand and grass in the demo scene now have their own friction presets. Previously they incorrectly used gravel friction curve.
+Improved skidmark alpha calculation.
+[WC3D] Changed the way forward friction coefficient affects the forces. Increasing the coefficient will no longer increase the torque but rather the torque limit before slipping which is correct.
+[WC3D] Big improvements to the general feel of Wheel Controller.
+[WC3D] Fixed spring length difference between single and multiple ray modes.
+[WC3D] Fixed wheel stops spinning if not powered as soon as it loses contact with surface.
+[WC3D] Fixed bottoming out calculation.
+[WC3D] Gizmos are only drawn when object selected to reduce clutter.
+[WC3D] Fixed problem with ground detection not happening at the lateral center of the wheel when side resolution was 1, but rather to the side.
+[WC3D] Scan ignore layer is now assigned through a multiple choice dropdown.
+
+
+v1.3
+------------------------------
+- [WC3D]  Support for calipers and other non-rotating objects that move with the wheel but do not rotate.
+- Added example script for setting up a vehicle at runtime.
+- Fixed errors when initializing the script at runtime from another script.
+- Fixed ‘Trailer tag not found’ error when Trailer tag does not exist.
+- Fixed possible errors with standard assets because Unity importer fails to import standard asset  dependencies when importing required standard assets.
+- Visual improvements to the demo scene.
+- Other minor fixes and changes.
+
+
+v1.2
+------------------------------
+- Horn sound.
+- Replaced semi truck with GR3D’s model.
+- Added power reduction option for trucks with no trailer.
+- Manual clutch not working properly with manual transmission.
+- [WC3D]  Wheels locked up when in neutral on a decline / incline with no user input.
+- Handbrake coefficient set to 0 on all axles on some of the vehicles.
+- Revlimiter not causing fuel to cut off / no speed limit per gear.
+- All cameras on playground (mobile) scene are set to disabled.
+- Manual transmission sometimes ignores the input.
+- Trailer attach detach sometimes ignores user input.
+- When using multiple trailers some of the trailers might not show attach prompt.
+- Brakes toggling between on and off state when standing still under braking.
+- Incorrect default clutch engagement curve.
+- Fixed reverse gear ordering when gears list is constructed.
+- Added missing tooltip explanations for trailer custom inspector.
+- Added shift safeguards for manual transmission when going from forward to reverse gears and other way around.
+
+
+v1.1
+------------------------------
+- 0 garbage creation.
+- Added flip over feature.
+- Damped interior sound when camera is inside the vehicle.
+- Separate forward and reverse gear lists.
+- Unlimited number of reverse gears.
+- Improvements to the automatic gearbox.
+- Random shift duration and shift point (works along with the dynamic shift point).
+- Manual clutch with input binding.
+- Handbrake is now a float instead of bool.
+
+
+v1.0
+------------------------------
+- Initial.

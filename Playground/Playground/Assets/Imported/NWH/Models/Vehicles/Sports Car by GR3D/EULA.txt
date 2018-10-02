@@ -1,0 +1,12 @@
+End User Licensing Agreement
+All Game Ready 3D (GR3D) assets included in this package are subjected to the following End User License Agreement.  
+* Non-Exclusive Licensing: All rights, titles and interests in the asset (including any updates or revisions), and all intellectual property rights therein, is and shall remain the exclusive property of Game Ready 3d models. All assets created by Game Ready 3D shall have Non-Exclusive Licensing, unless otherwise specified. Game Ready 3d has full rights to resell any asset created at any price to anyone.
+* Revocable: Game Ready 3d models has the right to revoke any license granted if license agreement is breached or any fraudulent activity is suspected. If a license is revoked, Licensee is responsible for the immediate deletion of all files and may not distribute the asset.
+* Non-sublicensable: Licensee do not have the right to re-license asset.
+* Non-transferable: License can not be transferred/sold/given away to any other individual/group/company/corporation/entity.
+* Assets may be used in multiple computer/video/web games only if buyer/player of the game do not have access to the assets.
+* Assets may not be resold in any form, except for in computer/video/web games where buyer/player of the game do not have access to the assets.
+* Assets may not be modified and resold in any form.
+* Assets may not be given away or redistributed in any form.
+
+
