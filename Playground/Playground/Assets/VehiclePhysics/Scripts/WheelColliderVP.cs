@@ -10,6 +10,9 @@ public class WheelColliderVP : MonoBehaviour {
     [SerializeField]
     public Suspension suspension;
 
+    [SerializeField]
+    public Friction[] frictionList;
+
     private Rigidbody rigidbody;
 
     public bool showDebug = false;
@@ -79,7 +82,7 @@ public class WheelColliderVP : MonoBehaviour {
     {
 
         // Suspension
-        rigidbody.AddForceAtPosition(transform.up * suspension.TotalForce, transform.position);
+        rigidbody.AddForceAtPosition(Vector3.up * suspension.TotalForce, transform.position);
 
     }
 
@@ -154,6 +157,27 @@ public class WheelColliderVP : MonoBehaviour {
         {
             get { return Force + DampingForce; }
         }
+    }
+
+    [System.Serializable]
+    public class Friction
+    {
+
+        public string name = "DefaultFriction";
+
+        // Forward
+        public float staticMy = 0.8f;
+        public float rollingMy = 0.3f;
+        public float dynamicMy = 0.7f;
+
+        // Sideways
+        public float lateralStaticMy = 0.3f;
+        public float lateralRollingMy = 0.1f;
+        public float lateralDynamicMy = 0.2f;
+
+
+        public static Friction[] list;
+        
     }
 
     #endregion
