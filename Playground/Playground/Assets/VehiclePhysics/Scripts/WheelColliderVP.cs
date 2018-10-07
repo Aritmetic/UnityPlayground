@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WheelColliderVP : MonoBehaviour {
 
+    [Range(-500f, 500f)] public float force = 0f;
+
     [SerializeField]
     public Wheel wheel;
 
@@ -11,7 +13,7 @@ public class WheelColliderVP : MonoBehaviour {
     public Suspension suspension;
 
     [SerializeField]
-    public Friction[] frictionList;
+    public Friction[] frictions;
 
     private Rigidbody rigidbody;
 
@@ -67,6 +69,7 @@ public class WheelColliderVP : MonoBehaviour {
         if (!wheel.IsGrounded) return;
 
         CalculateSuspensionForce();
+        CalculateFriction();
         
     }
 
@@ -78,11 +81,32 @@ public class WheelColliderVP : MonoBehaviour {
 
     }
 
+    public void CalculateFriction()
+    {
+        float forwardFriction = Mathf.Abs((rigidbody.mass * Physics.gravity.y) * frictions[0].staticMy);
+        forwardFriction = Mathf.Clamp(forwardFriction, 0, .5f * rigidbody.mass * (3.6f * (rigidbody.velocity.z * rigidbody.velocity.z)));
+
+        Debug.DrawLine(wheel.hit.point, wheel.hit.point + rigidbody.velocity * 5);
+
+        float forwardSpeed = rigidbody.velocity.z;
+        float sidewaySpeed = rigidbody.velocity.x;
+
+        rigidbody.AddForceAtPosition(force * transform.forward, wheel.hit.point);
+        rigidbody.AddForceAtPosition(-Mathf.Sign(forwardSpeed) * forwardFriction * transform.forward, wheel.hit.point);
+
+        float totalForwardForce = Mathf.Clamp(Mathf.Abs(force) - forwardFriction, 0, Mathf.Infinity);
+
+        Debug.Log("fr: " + forwardFriction + ", force: " + force + ", t: " + (force - forwardFriction));
+
+        //rigidbody.AddForceAtPosition( Mathf.Sign(force) * Mathf.Clamp(force - forwardFriction, 0, Mathf.Infinity) * transform.forward ,wheel.hit.point);
+
+    }
+
     public void ApplyForces()
     {
 
         // Suspension
-        rigidbody.AddForceAtPosition(Vector3.up * suspension.TotalForce, transform.position);
+        rigidbody.AddForceAtPosition(wheel.hit.normal * suspension.TotalForce, transform.position);
 
     }
 
@@ -120,6 +144,8 @@ public class WheelColliderVP : MonoBehaviour {
     [System.Serializable]
     public class Wheel
     {
+
+        public string name;
 
         public float mass = 25.0f;
         public float tireRadius = 0.5f;
@@ -163,6 +189,11 @@ public class WheelColliderVP : MonoBehaviour {
     public class Friction
     {
 
+        public enum Enums
+        {
+            first, second
+        }
+
         public string name = "DefaultFriction";
 
         // Forward
@@ -177,7 +208,12 @@ public class WheelColliderVP : MonoBehaviour {
 
 
         public static Friction[] list;
-        
+
+        public Friction()
+        {
+            staticMy = .8f;
+        }
+
     }
 
     #endregion

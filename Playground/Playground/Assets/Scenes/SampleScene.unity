@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 164541639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4999999, z: 0}
+  m_LocalPosition: {x: -0.00000023841858, y: -0.4999999, z: -0.00000071525574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1559530110}
@@ -281,7 +281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 0
   wheel:
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
@@ -299,7 +301,14 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictionList: []
+  frictions:
+  - name: Default
+    staticMy: 0.8
+    rollingMy: 0.8
+    dynamicMy: 0.8
+    lateralStaticMy: 0.8
+    lateralRollingMy: 0.8
+    lateralDynamicMy: 0.8
   showDebug: 1
 --- !u!1 &534669902
 GameObject:
@@ -1464,7 +1473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 0
   wheel:
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
@@ -1482,7 +1493,14 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictionList: []
+  frictions:
+  - name: Default
+    staticMy: 0.8
+    rollingMy: 0.8
+    dynamicMy: 0.8
+    lateralStaticMy: 0.8
+    lateralRollingMy: 0.8
+    lateralDynamicMy: 0.8
   showDebug: 1
 --- !u!1 &975920057
 GameObject:
@@ -1608,7 +1626,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1141570075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4999999, z: 0}
+  m_LocalPosition: {x: 0.00000023841858, y: -0.4999999, z: -0.00000071525574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1012217999}
@@ -1724,7 +1742,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465038891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.22, z: 2.15}
+  m_LocalPosition: {x: 7.52, y: 3.4, z: 20.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 975920058}
@@ -1784,7 +1802,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1547099033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4999999, z: 0}
+  m_LocalPosition: {x: 0.00000023841858, y: -0.4999999, z: 0.00000071525574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 709842175}
@@ -1989,7 +2007,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 0
   wheel:
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
@@ -2007,13 +2027,14 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictionList:
-  - name: 
-    my: 0
-  - name: 
-    my: 0
-  - name: 
-    my: 0
+  frictions:
+  - name: Default
+    staticMy: 0.8
+    rollingMy: 0.8
+    dynamicMy: 0.8
+    lateralStaticMy: 0.8
+    lateralRollingMy: 0.8
+    lateralDynamicMy: 0.8
   showDebug: 1
 --- !u!1 &1684164027
 GameObject:
@@ -2087,6 +2108,91 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1684164027}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1900116016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1900116020}
+  - component: {fileID: 1900116019}
+  - component: {fileID: 1900116018}
+  - component: {fileID: 1900116017}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1900116017
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900116016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1900116018
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900116016}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1900116019
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900116016}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1900116020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900116016}
+  m_LocalRotation: {x: -0.120590515, y: 0.37940946, z: 0.049950223, w: 0.9159756}
+  m_LocalPosition: {x: 6.98, y: 4.36, z: 6.16}
+  m_LocalScale: {x: 3.9982, y: 2.9690702, z: 30.60314}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -15, y: 45, z: 0}
 --- !u!1 &1902549233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2215,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1902549233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4999999, z: 0}
+  m_LocalPosition: {x: -0.00000023841858, y: -0.4999999, z: 0.00000071525574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1684164028}
@@ -2157,7 +2263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 0
   wheel:
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
@@ -2175,5 +2283,12 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictionList: []
+  frictions:
+  - name: Default
+    staticMy: 0.8
+    rollingMy: 0.8
+    dynamicMy: 0.8
+    lateralStaticMy: 0.8
+    lateralRollingMy: 0.8
+    lateralDynamicMy: 0.8
   showDebug: 1
