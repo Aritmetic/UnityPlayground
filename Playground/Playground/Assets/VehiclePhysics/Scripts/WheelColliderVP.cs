@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WheelColliderVP : MonoBehaviour {
 
-    [Range(-500f, 500f)] public float force = 0f;
-
     [SerializeField]
     public Wheel wheel;
 
@@ -15,7 +13,7 @@ public class WheelColliderVP : MonoBehaviour {
     [SerializeField]
     public Friction[] frictions;
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     public bool showDebug = false;
 
@@ -37,6 +35,8 @@ public class WheelColliderVP : MonoBehaviour {
         ApplyForces();
 
         UpdateVisuals();
+
+        wheel.MotorTorque = 0.0f;
 
         if (showDebug) DrawDebug(); 
 
@@ -83,31 +83,51 @@ public class WheelColliderVP : MonoBehaviour {
 
     public void CalculateFriction()
     {
-        float forwardFriction = Mathf.Abs((rigidbody.mass * Physics.gravity.y) * frictions[0].staticMy);
-        forwardFriction = Mathf.Clamp(forwardFriction, 0, .5f * rigidbody.mass * (3.6f * (rigidbody.velocity.z * rigidbody.velocity.z)));
+        wheel.previousSpeed = wheel.totalSpeed;
+        wheel.totalSpeed = (transform.position - wheel.previousPosition) / Time.deltaTime;
 
-        Debug.DrawLine(wheel.hit.point, wheel.hit.point + rigidbody.velocity * 5);
+        wheel.sidewaySpeed = 3.6f * (wheel.totalSpeed.x * wheel.Visual.transform.right.x + wheel.totalSpeed.y * wheel.Visual.transform.right.y + wheel.totalSpeed.z * wheel.Visual.transform.right.z);
+        wheel.forwardSpeed = 3.6f * (wheel.totalSpeed.x * transform.forward.x + wheel.totalSpeed.y * transform.forward.y + wheel.totalSpeed.z * transform.forward.z);
 
-        float forwardSpeed = rigidbody.velocity.z;
-        float sidewaySpeed = rigidbody.velocity.x;
+        wheel.acceleration = (wheel.totalSpeed.magnitude - wheel.previousSpeed.magnitude) / Time.deltaTime;
 
-        rigidbody.AddForceAtPosition(force * transform.forward, wheel.hit.point);
-        rigidbody.AddForceAtPosition(-Mathf.Sign(forwardSpeed) * forwardFriction * transform.forward, wheel.hit.point);
+        float NormalForce = rigidbody.mass * Physics.gravity.y; //# todo suspension force need to be applied. Also DonwFOrce from wind.
+        
 
-        float totalForwardForce = Mathf.Clamp(Mathf.Abs(force) - forwardFriction, 0, Mathf.Infinity);
+        // Sideway Friction
+        float sidewayFrictionMax = .5f * rigidbody.mass * (wheel.sidewaySpeed * wheel.sidewaySpeed);
 
-        Debug.Log("fr: " + forwardFriction + ", force: " + force + ", t: " + (force - forwardFriction));
+        float sidewayFriction = Mathf.Abs(NormalForce * frictions[0].lateralStaticMy); // Max
 
-        //rigidbody.AddForceAtPosition( Mathf.Sign(force) * Mathf.Clamp(force - forwardFriction, 0, Mathf.Infinity) * transform.forward ,wheel.hit.point);
+        sidewayFriction = Mathf.Clamp(sidewayFriction, 0, Mathf.Abs(sidewayFrictionMax));
 
+        wheel.sidewayForce = -Mathf.Sign(wheel.sidewaySpeed) * sidewayFriction;
+        wheel.sidewayForce = 0;
+
+
+        // Forward Friction
+        float forwardFrictionMax = .5f * rigidbody.mass * (wheel.forwardSpeed * wheel.sidewaySpeed);
+
+        float forwardFriction = Mathf.Abs(NormalForce * frictions[0].staticMy);
+        
+        forwardFriction = Mathf.Clamp(forwardFriction, 0, Mathf.Abs(forwardFrictionMax));
+        
+        wheel.forwardForce = wheel.MotorTorque + -Mathf.Sign(wheel.forwardSpeed) * forwardFriction;
+
+
+        wheel.previousPosition = transform.position;
     }
 
     public void ApplyForces()
     {
 
         // Suspension
-        rigidbody.AddForceAtPosition(wheel.hit.normal * suspension.TotalForce, transform.position);
+        //rigidbody.AddForceAtPosition(wheel.hit.normal * suspension.TotalForce, transform.position);
 
+        // Friction
+        rigidbody.AddForceAtPosition(wheel.sidewayForce * wheel.Visual.transform.right, wheel.hit.point);
+        rigidbody.AddForceAtPosition(wheel.forwardForce * wheel.Visual.transform.forward, wheel.hit.point);
+        
     }
 
     public void UpdateVisuals()
@@ -124,7 +144,7 @@ public class WheelColliderVP : MonoBehaviour {
     public void GetWorldPos(out Vector3 position, out Quaternion rotation)
     {
         position = new Vector3(0, -suspension.Distance + suspension.Compression, 0);
-        Quaternion q = transform.rotation;
+        Quaternion q = Quaternion.identity;
 
         q.y += Quaternion.Euler(0, wheel.SteerAngle, 0).y;
 
@@ -138,6 +158,12 @@ public class WheelColliderVP : MonoBehaviour {
             transform.position, 
             transform.position - new Vector3(0, suspension.Distance - suspension.Compression + wheel.tireRadius, 0), 
             Color.green);
+
+        // Speed Vectors
+        Vector3 origin = transform.position;
+        Debug.DrawLine(origin, origin + wheel.totalSpeed, Color.red);
+        Debug.DrawLine(origin, origin + transform.right * wheel.sidewaySpeed, Color.blue);
+        Debug.DrawLine(origin, origin + transform.forward * wheel.forwardSpeed, Color.yellow);
     }
 
     #region Classes
@@ -151,16 +177,45 @@ public class WheelColliderVP : MonoBehaviour {
         public float tireRadius = 0.5f;
         public float width = 0.2f;
 
-        [HideInInspector] public float SteerAngle = 0.0f;
-        [HideInInspector] public float MotorTorque = 0.0f;
+        public bool isSteerable = false;
+
+        private float steerAngle = 0.0f;
+        public float SteerAngle
+        {
+            get { return (isSteerable) ? steerAngle : 0.0f;}
+            set { steerAngle = value; }
+        }
+
+        [HideInInspector]
+        public float MotorTorque = 0.0f;
         
-        public float rpm = 0;
+        public float rpm = 0.0f;
+
+        [HideInInspector]
+        public Vector3 previousPosition = Vector3.zero;
+
+        public float acceleration = 0.0f;
+
+        public Vector3 totalSpeed = Vector3.zero;
+        public Vector3 previousSpeed = Vector3.zero;
+
+        public float forwardSpeed = 0.0f;
+        public float sidewaySpeed = 0.0f;
+
+        public float forwardForce = 0.0f;
+        public float sidewayForce = 0.0f;
+
 
         [HideInInspector]
         public RaycastHit hit;
         public bool IsGrounded = false;
 
         public GameObject Visual;
+
+        public override string ToString()
+        {
+            return "a: " + acceleration;
+        }
 
     }
 
