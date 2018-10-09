@@ -84,14 +84,14 @@ public class WheelColliderVP : MonoBehaviour {
     public void CalculateFriction()
     {
         wheel.previousSpeed = wheel.totalSpeed;
-        wheel.totalSpeed = (transform.position - wheel.previousPosition) / Time.deltaTime;
+        wheel.totalSpeed = 3.6f * ((transform.position - wheel.previousPosition) / Time.deltaTime);
 
-        wheel.sidewaySpeed = 3.6f * (wheel.totalSpeed.x * wheel.Visual.transform.right.x + wheel.totalSpeed.y * wheel.Visual.transform.right.y + wheel.totalSpeed.z * wheel.Visual.transform.right.z);
-        wheel.forwardSpeed = 3.6f * (wheel.totalSpeed.x * transform.forward.x + wheel.totalSpeed.y * transform.forward.y + wheel.totalSpeed.z * transform.forward.z);
+        wheel.sidewaySpeed = (wheel.totalSpeed.x * wheel.Visual.transform.right.x + wheel.totalSpeed.y * wheel.Visual.transform.right.y + wheel.totalSpeed.z * wheel.Visual.transform.right.z);
+        wheel.forwardSpeed = (wheel.totalSpeed.x * wheel.Visual.transform.forward.x + wheel.totalSpeed.y * wheel.Visual.transform.forward.y + wheel.totalSpeed.z * wheel.Visual.transform.forward.z);
 
         wheel.acceleration = (wheel.totalSpeed.magnitude - wheel.previousSpeed.magnitude) / Time.deltaTime;
 
-        float NormalForce = rigidbody.mass * Physics.gravity.y; //# todo suspension force need to be applied. Also DonwFOrce from wind.
+        float NormalForce = (rigidbody.mass * Physics.gravity.y) / 4; //# todo suspension force need to be applied. Also DonwFOrce from wind.
         
 
         // Sideway Friction
@@ -102,7 +102,6 @@ public class WheelColliderVP : MonoBehaviour {
         sidewayFriction = Mathf.Clamp(sidewayFriction, 0, Mathf.Abs(sidewayFrictionMax));
 
         wheel.sidewayForce = -Mathf.Sign(wheel.sidewaySpeed) * sidewayFriction;
-        wheel.sidewayForce = 0;
 
 
         // Forward Friction
@@ -113,16 +112,18 @@ public class WheelColliderVP : MonoBehaviour {
         forwardFriction = Mathf.Clamp(forwardFriction, 0, Mathf.Abs(forwardFrictionMax));
         
         wheel.forwardForce = wheel.MotorTorque + -Mathf.Sign(wheel.forwardSpeed) * forwardFriction;
-
-
+        
         wheel.previousPosition = transform.position;
+
+        if (!showDebug) return;
+        Debug.DrawLine(wheel.hit.point, wheel.hit.point + forwardFriction * wheel.Visual.transform.forward, Color.green);
     }
 
     public void ApplyForces()
     {
 
         // Suspension
-        //rigidbody.AddForceAtPosition(wheel.hit.normal * suspension.TotalForce, transform.position);
+        rigidbody.AddForceAtPosition(wheel.hit.normal * suspension.TotalForce, transform.position);
 
         // Friction
         rigidbody.AddForceAtPosition(wheel.sidewayForce * wheel.Visual.transform.right, wheel.hit.point);
@@ -153,6 +154,7 @@ public class WheelColliderVP : MonoBehaviour {
 
     public void DrawDebug()
     {
+        if (!showDebug) return;
         // CurrentSuspension.
         Debug.DrawLine(
             transform.position, 
@@ -160,10 +162,10 @@ public class WheelColliderVP : MonoBehaviour {
             Color.green);
 
         // Speed Vectors
-        Vector3 origin = transform.position;
+        Vector3 origin = wheel.hit.point;
         Debug.DrawLine(origin, origin + wheel.totalSpeed, Color.red);
-        Debug.DrawLine(origin, origin + transform.right * wheel.sidewaySpeed, Color.blue);
-        Debug.DrawLine(origin, origin + transform.forward * wheel.forwardSpeed, Color.yellow);
+        Debug.DrawLine(origin, origin + wheel.Visual.transform.right * wheel.sidewaySpeed, Color.blue);
+        Debug.DrawLine(origin, origin + wheel.Visual.transform.forward * wheel.forwardSpeed, Color.yellow);
     }
 
     #region Classes
