@@ -95,7 +95,7 @@ public class WheelColliderVP : MonoBehaviour {
         
 
         // Sideway Friction
-        float sidewayFrictionMax = .5f * rigidbody.mass * (wheel.sidewaySpeed * wheel.sidewaySpeed);
+        float sidewayFrictionMax = (.5f * rigidbody.mass * (wheel.sidewaySpeed * wheel.sidewaySpeed)) / 4;
 
         float sidewayFriction = Mathf.Abs(NormalForce * frictions[0].lateralStaticMy); // Max
 
@@ -105,7 +105,7 @@ public class WheelColliderVP : MonoBehaviour {
 
 
         // Forward Friction
-        float forwardFrictionMax = .5f * rigidbody.mass * (wheel.forwardSpeed * wheel.forwardSpeed);
+        float forwardFrictionMax = (.5f * rigidbody.mass * (wheel.forwardSpeed * wheel.forwardSpeed)) / 4;
 
         float forwardFriction = Mathf.Abs(NormalForce * frictions[0].staticMy);
         
@@ -115,11 +115,8 @@ public class WheelColliderVP : MonoBehaviour {
         
         wheel.previousPosition = transform.position;
 
-        if(wheel.isSteerable)
-            Debug.Log("force: " + forwardFriction + ", clc: " + Mathf.Abs(NormalForce * frictions[0].staticMy) + ", max: " + forwardFrictionMax);
-
         if (!showDebug) return;
-        Debug.DrawLine(wheel.hit.point, wheel.hit.point + forwardFriction * wheel.Visual.transform.forward, Color.green);
+            Debug.DrawLine(wheel.hit.point, wheel.hit.point + forwardFriction * wheel.Visual.transform.forward, Color.green);
     }
 
     public void ApplyForces()

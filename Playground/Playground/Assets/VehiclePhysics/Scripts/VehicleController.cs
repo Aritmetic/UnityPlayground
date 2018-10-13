@@ -46,7 +46,7 @@ public class VehicleController : MonoBehaviour {
 
             t += coll.wheel.ToString() + "\n";
         }
-        t += "v: " + rigidbody.velocity.magnitude * 3.6f;
+        t += "v: " + rigidbody.velocity.magnitude * 3.6f + "km/h";
 
         if (debugText != null)
         {

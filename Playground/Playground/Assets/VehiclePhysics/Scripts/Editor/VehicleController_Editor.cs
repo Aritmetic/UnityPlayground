@@ -17,6 +17,7 @@ public class VehicleController_Editor : Editor {
     private void OnSceneGUI()
     {
         Handles.color = Color.red;
-        Handles.SphereHandleCap(0, vehicle.transform.position + vehicle.centerOfMass, Quaternion.identity, .2f, EventType.Repaint);
+        Vector3 pos = vehicle.transform.rotation * vehicle.centerOfMass;
+        Handles.SphereHandleCap(0, vehicle.transform.position + pos, Quaternion.identity, .2f, EventType.Repaint);
     }
 }
