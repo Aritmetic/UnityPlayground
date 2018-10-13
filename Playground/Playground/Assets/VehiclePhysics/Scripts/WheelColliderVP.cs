@@ -105,7 +105,7 @@ public class WheelColliderVP : MonoBehaviour {
 
 
         // Forward Friction
-        float forwardFrictionMax = .5f * rigidbody.mass * (wheel.forwardSpeed * wheel.sidewaySpeed);
+        float forwardFrictionMax = .5f * rigidbody.mass * (wheel.forwardSpeed * wheel.forwardSpeed);
 
         float forwardFriction = Mathf.Abs(NormalForce * frictions[0].staticMy);
         
@@ -114,6 +114,9 @@ public class WheelColliderVP : MonoBehaviour {
         wheel.forwardForce = wheel.MotorTorque + -Mathf.Sign(wheel.forwardSpeed) * forwardFriction;
         
         wheel.previousPosition = transform.position;
+
+        if(wheel.isSteerable)
+            Debug.Log("force: " + forwardFriction + ", clc: " + Mathf.Abs(NormalForce * frictions[0].staticMy) + ", max: " + forwardFrictionMax);
 
         if (!showDebug) return;
         Debug.DrawLine(wheel.hit.point, wheel.hit.point + forwardFriction * wheel.Visual.transform.forward, Color.green);
@@ -216,7 +219,7 @@ public class WheelColliderVP : MonoBehaviour {
 
         public override string ToString()
         {
-            return "a: " + acceleration;
+            return "a: " + acceleration ;
         }
 
     }

@@ -9,8 +9,14 @@ public class VehicleController : MonoBehaviour {
     public bool customCenterOfMass = false;
     public Vector3 centerOfMass;
 
+    [Range(0.0f, 20000f)] public float testTorque = 0.0f;
     public float MaxTorque = 4000f;
     public float MaxSteerAngle = 40.0f;
+
+    public Vector3 frontDownForcePoint = Vector3.zero;
+    public float frontValue = 1.0f;
+    public Vector3 backDownForcePoint = Vector3.zero;
+    public float backValue = 1.0f;
 
     public WheelColliderVP[] colls;
 
@@ -36,10 +42,11 @@ public class VehicleController : MonoBehaviour {
             WheelColliderVP coll = colls[i];
 
             coll.wheel.SteerAngle = steerAngle;
-            coll.wheel.MotorTorque = motorTorque;
+            coll.wheel.MotorTorque = motorTorque + testTorque;
 
             t += coll.wheel.ToString() + "\n";
         }
+        t += "v: " + rigidbody.velocity.magnitude * 3.6f;
 
         if (debugText != null)
         {
