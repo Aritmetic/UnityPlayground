@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4239782618119372}
   - component: {fileID: 54939474403208350}
-  - component: {fileID: 114398445531724628}
+  - component: {fileID: 114464584912614040}
   m_Layer: 0
   m_Name: TestCar
   m_TagString: Untagged
@@ -900,15 +900,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290938572531108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddfb061064cb4cee9d93675ed791777, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wheel:
-    name: Default
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
-    isSteerable: 1
+    isSteerable: 0
     MotorTorque: 0
     rpm: 0
     previousPosition: {x: 0, y: 0, z: 0}
@@ -930,14 +930,7 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictions:
-  - name: Default
-    staticMy: 0.8
-    rollingMy: 0.8
-    dynamicMy: 0.8
-    lateralStaticMy: 0.7
-    lateralRollingMy: 0.7
-    lateralDynamicMy: 0.7
+  frictions: []
   showDebug: 0
 --- !u!114 &114097570367562890
 MonoBehaviour:
@@ -947,15 +940,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1579510916101634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddfb061064cb4cee9d93675ed791777, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wheel:
-    name: Default
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
-    isSteerable: 1
+    isSteerable: 0
     MotorTorque: 0
     rpm: 0
     previousPosition: {x: 0, y: 0, z: 0}
@@ -977,14 +970,7 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictions:
-  - name: Default
-    staticMy: 0.8
-    rollingMy: 0.8
-    dynamicMy: 0.8
-    lateralStaticMy: 0.7
-    lateralRollingMy: 0.7
-    lateralDynamicMy: 0.7
+  frictions: []
   showDebug: 0
 --- !u!114 &114163171950080448
 MonoBehaviour:
@@ -994,11 +980,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1584203902050354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddfb061064cb4cee9d93675ed791777, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wheel:
-    name: Default
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
@@ -1024,14 +1010,7 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictions:
-  - name: Default
-    staticMy: 0.8
-    rollingMy: 0.8
-    dynamicMy: 0.8
-    lateralStaticMy: 0.7
-    lateralRollingMy: 0.7
-    lateralDynamicMy: 0.7
+  frictions: []
   showDebug: 0
 --- !u!114 &114396024468318308
 MonoBehaviour:
@@ -1041,11 +1020,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626719082738382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddfb061064cb4cee9d93675ed791777, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a6e16ecd95f266499edac5d8dc88dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wheel:
-    name: Default
+    name: 
     mass: 25
     tireRadius: 0.5
     width: 0.2
@@ -1071,16 +1050,9 @@ MonoBehaviour:
     PreviousCompression: 0
     Force: 0
     DampingForce: 0
-  frictions:
-  - name: Default
-    staticMy: 0.8
-    rollingMy: 0.8
-    dynamicMy: 0.8
-    lateralStaticMy: 0.7
-    lateralRollingMy: 0.7
-    lateralDynamicMy: 0.7
+  frictions: []
   showDebug: 0
---- !u!114 &114398445531724628
+--- !u!114 &114464584912614040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1088,22 +1060,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1257532124575380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 230553111eff14f40b77f743ff21ee16, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dad127aeac5fa34fa46f6e494f8262a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 54939474403208350}
-  customCenterOfMass: 1
-  centerOfMass: {x: 0, y: -0.13, z: 0.86}
+  customCenterOfMass: 0
+  centerOfMass: {x: 0, y: 0.21308975, z: -0.39117196}
   testTorque: 0
-  MaxTorque: 8000
+  MaxTorque: 4000
   MaxSteerAngle: 40
   frontDownForcePoint: {x: 0, y: 0, z: 0}
   frontValue: 1
   backDownForcePoint: {x: 0, y: 0, z: 0}
   backValue: 1
-  colls:
-  - {fileID: 114066287278581492}
-  - {fileID: 114097570367562890}
-  - {fileID: 114396024468318308}
-  - {fileID: 114163171950080448}
+  colls: []
   debugText: {fileID: 0}
