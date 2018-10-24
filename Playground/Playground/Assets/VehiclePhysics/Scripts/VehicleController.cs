@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class VehicleController : MonoBehaviour {
 
-    public Rigidbody rigidbody;
+    public new Rigidbody rigidbody;
     public bool customCenterOfMass = false;
     public Vector3 centerOfMass;
 
-    [Range(0.0f, 20000f)] public float testTorque = 0.0f;
-    public float MaxTorque = 4000f;
+    public Steering steering;
+
+    public Engine engine;
+
+    public Transmission transmission;
+
+    [Tooltip("SI Unit KW")]
+    public float MaxTorque = 400f;
     public float MaxSteerAngle = 40.0f;
 
     public Vector3 frontDownForcePoint = Vector3.zero;
@@ -18,33 +24,75 @@ public class VehicleController : MonoBehaviour {
     public Vector3 backDownForcePoint = Vector3.zero;
     public float backValue = 1.0f;
 
-    public WheelColliderVP[] colls;
+    public Axle[] axles;
+    //public WheelColliderVP[] colls;
 
     [Header("Debug")]
     public Text debugText;
 
 	// Use this for initialization
 	void Start () {
-        Initialize();
-	}
-	
-	// Update is called once per frame
-	void Update () {
         rigidbody.centerOfMass = centerOfMass;
 
-        float steerAngle = Input.GetAxis("Horizontal") * MaxSteerAngle;
+        foreach (Axle a in axles)
+            a.setRigidbody(rigidbody);
+        
+	}
+	
+    [System.Serializable]
+    public class Spoiler
+    {
+        // https://en.wikipedia.org/wiki/Downforce
+        // http://www.ppl-flight-training.com/lift-formula.html
+
+        public Transform transform;
+
+        [Tooltip("Co-Effiecient of Lift")]
+        public float CL = 2.0f;
+        [Tooltip("Surface Area")]
+        public float s = 2f;
+
+        public float W = 2.0f;
+        public float H = .3f;
+        public float F = .3f;
+
+        public const float p = 1.255f;
+        public const float pHalf = .62775f;
+        
+        public float GetDownForce(float v)
+        {
+            return CL * pHalf * v * s;
+            //return .5f * W * H * F * p * v;
+        }
+    }
+
+    public Spoiler[] downForces;
+
+	// Update is called once per frame
+	void FixedUpdate() {
+        rigidbody.centerOfMass = centerOfMass;
+
+        float sqaureVelocity = rigidbody.velocity.magnitude * rigidbody.velocity.magnitude;
+        
+        float steerInput = Input.GetAxis("Horizontal");
         float motorTorque = Input.GetAxis("Vertical") * MaxTorque;
 
         string t = "";
 
-        for(int i = 0; i < colls.Length; ++i)
+        for (int i = 0; i < downForces.Length; ++i)
         {
-            WheelColliderVP coll = colls[i];
+            rigidbody.AddForceAtPosition(-transform.up * downForces[i].GetDownForce(sqaureVelocity), downForces[i].transform.position);
+        }
 
-            coll.wheel.SteerAngle = steerAngle;
-            coll.wheel.MotorTorque = motorTorque + testTorque;
+        for (int i = 0; i < axles.Length; ++i)
+        {
+            Axle axle = axles[i];
 
-            t += coll.wheel.ToString() + "\n";
+            axle.steerInput = steerInput;
+            axle.motorTorque = motorTorque;
+            axle.FixedUpdate();
+            
+            t += axle.ToString() + "\n";
         }
         t += "v: " + rigidbody.velocity.magnitude * 3.6f + "km/h";
 
@@ -55,15 +103,15 @@ public class VehicleController : MonoBehaviour {
 
 	}
 
-    [ContextMenu("Init")]
-    public void Initialize()
-    {
-        if (rigidbody == null) gameObject.AddComponent<Rigidbody>();
+    //[ContextMenu("Init")]
+    //public void Initialize()
+    //{
+    //    if (rigidbody == null) gameObject.AddComponent<Rigidbody>();
 
-        rigidbody = GetComponent<Rigidbody>();
-        if (customCenterOfMass)
-            rigidbody.centerOfMass = centerOfMass;
-        else
-            centerOfMass = rigidbody.centerOfMass;
-    }
+    //    rigidbody = GetComponent<Rigidbody>();
+    //    if (customCenterOfMass)
+    //        rigidbody.centerOfMass = centerOfMass;
+    //    else
+    //        centerOfMass = rigidbody.centerOfMass;
+    //}
 }

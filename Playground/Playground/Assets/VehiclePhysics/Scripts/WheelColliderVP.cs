@@ -1,8 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class WheelColliderVP : MonoBehaviour {
+[System.Serializable]
+public class WheelColliderVP {
+
+    [SerializeField]
+    public GameObject WheelObject;
 
     [SerializeField]
     public Wheel wheel;
@@ -13,21 +18,23 @@ public class WheelColliderVP : MonoBehaviour {
     [SerializeField]
     public Friction[] frictions;
 
-    private new Rigidbody rigidbody;
+    [HideInInspector]
+    public Rigidbody rigidbody;
 
     public bool showDebug = false;
+    public Slider suspensionSlider;
+    
+    public void Init()
+    {
+        if (WheelObject == null) return;
 
-	// Use this for initialization
-	void Start () {
-        rigidbody = GetComponentInParent<Rigidbody>();
-        
-        if (wheel.Visual == null)
+        if(WheelObject.transform.GetChild(0) != null)
         {
-            wheel.Visual = transform.GetChild(0).gameObject;
+            wheel.Visual = WheelObject.transform.GetChild(0).gameObject;
         }
-	}
+    }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
 
         UpdateSuspension();
@@ -36,9 +43,9 @@ public class WheelColliderVP : MonoBehaviour {
 
         UpdateVisuals();
 
-        wheel.MotorTorque = 0.0f;
+        wheel.motorTorque = 0.0f;
 
-        if (showDebug) DrawDebug(); 
+        DrawDebug(); 
 
     }
 
@@ -46,17 +53,17 @@ public class WheelColliderVP : MonoBehaviour {
     public void UpdateSuspension()
     {
 
-        Vector3 origin = transform.position;
+        Vector3 origin = WheelObject.transform.position;
 
         // Set default values;
         wheel.IsGrounded = false;
         suspension.PreviousCompression = suspension.Compression;
         suspension.Compression = 0.0f;
 
-        if(Physics.Raycast(transform.position, -transform.up, out wheel.hit, suspension.Distance + wheel.tireRadius))
+        if(Physics.Raycast(WheelObject.transform.position, -WheelObject.transform.up, out wheel.hit, suspension.Distance + wheel.tireRadius))
         {
             wheel.IsGrounded = true;
-            suspension.Compression = suspension.Distance + wheel.tireRadius - (wheel.hit.point - transform.position).magnitude;
+            suspension.Compression = suspension.Distance + wheel.tireRadius - (wheel.hit.point - WheelObject.transform.position).magnitude;
         }
         
     }
@@ -80,50 +87,56 @@ public class WheelColliderVP : MonoBehaviour {
         suspension.DampingForce = (suspension.Compression - suspension.PreviousCompression) / Time.fixedDeltaTime * suspension.Damper;
 
     }
+    
 
     public void CalculateFriction()
     {
         wheel.previousSpeed = wheel.totalSpeed;
-        wheel.totalSpeed = 3.6f * ((transform.position - wheel.previousPosition) / Time.deltaTime);
+        wheel.totalSpeed = ((WheelObject.transform.position - wheel.previousPosition) / Time.deltaTime); //m/s
 
-        wheel.sidewaySpeed = (wheel.totalSpeed.x * wheel.Visual.transform.right.x + wheel.totalSpeed.y * wheel.Visual.transform.right.y + wheel.totalSpeed.z * wheel.Visual.transform.right.z);
-        wheel.forwardSpeed = (wheel.totalSpeed.x * wheel.Visual.transform.forward.x + wheel.totalSpeed.y * wheel.Visual.transform.forward.y + wheel.totalSpeed.z * wheel.Visual.transform.forward.z);
+        // Split total force based on rotation.
+        wheel.sidewaySpeed = (
+              wheel.totalSpeed.x * wheel.Visual.transform.right.x 
+            + wheel.totalSpeed.y * wheel.Visual.transform.right.y 
+            + wheel.totalSpeed.z * wheel.Visual.transform.right.z);
 
+        wheel.forwardSpeed = (
+              wheel.totalSpeed.x * wheel.Visual.transform.forward.x 
+            + wheel.totalSpeed.y * wheel.Visual.transform.forward.y 
+            + wheel.totalSpeed.z * wheel.Visual.transform.forward.z);
+        
         wheel.acceleration = (wheel.totalSpeed.magnitude - wheel.previousSpeed.magnitude) / Time.deltaTime;
 
-        float NormalForce = (rigidbody.mass * Physics.gravity.y) / 4; //# todo suspension force need to be applied. Also DonwFOrce from wind.
-        
+        float NormalForce = suspension.TotalForce;//(rigidbody.mass * Physics.gravity.y)/4; //# todo suspension force need to be applied. Also DonwFOrce from wind.
 
         // Sideway Friction
-        float sidewayFrictionMax = (.5f * rigidbody.mass * (wheel.sidewaySpeed * wheel.sidewaySpeed)) / 4;
-
-        float sidewayFriction = Mathf.Abs(NormalForce * frictions[0].lateralStaticMy); // Max
-
-        sidewayFriction = Mathf.Clamp(sidewayFriction, 0, Mathf.Abs(sidewayFrictionMax));
-
+        float sidewayFrictionMax = (.5f * rigidbody.mass * (wheel.totalSpeed.magnitude * wheel.totalSpeed.magnitude));
+        
+        float sidewayFriction = Mathf.Abs(NormalForce * frictions[0].sidewayStaticMy); // Max
+        sidewayFriction = Mathf.Clamp(sidewayFriction, -Mathf.Abs(sidewayFrictionMax), Mathf.Abs(sidewayFrictionMax));
+        
         wheel.sidewayForce = -Mathf.Sign(wheel.sidewaySpeed) * sidewayFriction;
-
+       
 
         // Forward Friction
-        float forwardFrictionMax = (.5f * rigidbody.mass * (wheel.forwardSpeed * wheel.forwardSpeed)) / 4;
+        float forwardFrictionMax = (.5f * rigidbody.mass * (wheel.totalSpeed.magnitude * wheel.totalSpeed.magnitude));
 
-        float forwardFriction = Mathf.Abs(NormalForce * frictions[0].staticMy);
-        
-        forwardFriction = Mathf.Clamp(forwardFriction, 0, Mathf.Abs(forwardFrictionMax));
-        
-        wheel.forwardForce = wheel.MotorTorque + -Mathf.Sign(wheel.forwardSpeed) * forwardFriction;
-        
-        wheel.previousPosition = transform.position;
+        float forwardFriction = Mathf.Abs(NormalForce * frictions[0].rollingMy);
+        forwardFriction = Mathf.Clamp(forwardFriction, -Mathf.Abs(forwardFrictionMax), Mathf.Abs(forwardFrictionMax));
 
-        if (!showDebug) return;
-            Debug.DrawLine(wheel.hit.point, wheel.hit.point + forwardFriction * wheel.Visual.transform.forward, Color.green);
+        wheel.forwardForce = (wheel.motorTorque/wheel.tireRadius)*10f + -Mathf.Sign(wheel.forwardSpeed) * forwardFriction;
+        
+
+
+        wheel.previousPosition = WheelObject.transform.position;
+
     }
 
     public void ApplyForces()
     {
-
+        if (!wheel.IsGrounded) return;
         // Suspension
-        rigidbody.AddForceAtPosition(wheel.hit.normal * suspension.TotalForce, transform.position);
+        rigidbody.AddForceAtPosition(wheel.hit.normal * suspension.TotalForce, WheelObject.transform.position);
 
         // Friction
         rigidbody.AddForceAtPosition(wheel.sidewayForce * wheel.Visual.transform.right, wheel.hit.point);
@@ -147,76 +160,114 @@ public class WheelColliderVP : MonoBehaviour {
         position = new Vector3(0, -suspension.Distance + suspension.Compression, 0);
         Quaternion q = Quaternion.identity;
 
-        q.y += Quaternion.Euler(0, wheel.SteerAngle, 0).y;
+        q.y += Quaternion.Euler(0, wheel.steerAngle, 0).y;
 
         rotation = q;
     }
 
     public void DrawDebug()
     {
+
+        suspensionSlider.value = 1 - suspension.Compression / (wheel.tireRadius + suspension.Distance);
+
         if (!showDebug) return;
         // CurrentSuspension.
         Debug.DrawLine(
-            transform.position, 
-            transform.position - new Vector3(0, suspension.Distance - suspension.Compression + wheel.tireRadius, 0), 
+            WheelObject.transform.position,
+            WheelObject.transform.position - new Vector3(0, suspension.Distance - suspension.Compression + wheel.tireRadius, 0), 
             Color.green);
 
         // Speed Vectors
         Vector3 origin = wheel.hit.point;
-        Debug.DrawLine(origin, origin + wheel.totalSpeed, Color.red);
-        Debug.DrawLine(origin, origin + wheel.Visual.transform.right * wheel.sidewaySpeed, Color.blue);
-        Debug.DrawLine(origin, origin + wheel.Visual.transform.forward * wheel.forwardSpeed, Color.yellow);
+        Debug.DrawLine(origin, origin + wheel.Visual.transform.right * wheel.sidewayForce, Color.red); // SidewayFriction
+        Debug.DrawLine(origin, origin + wheel.Visual.transform.forward * wheel.forwardForce, Color.blue); // Forward Force
+
+        
     }
 
     #region Classes
     [System.Serializable]
     public class Wheel
     {
-
         public string name;
-
+        
         public float mass = 25.0f;
         public float tireRadius = 0.5f;
         public float width = 0.2f;
+        
+        [HideInInspector]
+        public float steerAngle = 0.0f;
 
-        public bool isSteerable = false;
-
-        private float steerAngle = 0.0f;
-        public float SteerAngle
-        {
-            get { return (isSteerable) ? steerAngle : 0.0f;}
-            set { steerAngle = value; }
-        }
 
         [HideInInspector]
-        public float MotorTorque = 0.0f;
+        public float motorTorque = 0.0f;
         
+        [HideInInspector]
         public float rpm = 0.0f;
 
         [HideInInspector]
         public Vector3 previousPosition = Vector3.zero;
 
+        // INFO
+        [HideInInspector]
         public float acceleration = 0.0f;
 
+        [HideInInspector]
         public Vector3 totalSpeed = Vector3.zero;
+        [HideInInspector]
         public Vector3 previousSpeed = Vector3.zero;
 
+        [HideInInspector]
         public float forwardSpeed = 0.0f;
+        [HideInInspector]
         public float sidewaySpeed = 0.0f;
 
+        [HideInInspector]
         public float forwardForce = 0.0f;
+        [HideInInspector]
         public float sidewayForce = 0.0f;
 
-
+        //**********
+        // Wheel Hit
+        //**********
         [HideInInspector]
         public RaycastHit hit;
+        [HideInInspector]
         public bool IsGrounded = false;
+        [HideInInspector]
+        public bool isSpinning = false;
 
+        [HideInInspector]
+        public Friction currentFriction = new Friction();
+        public float forwardMy
+        {
+            get
+            {
+                if (totalSpeed.magnitude <= 1.0f) return currentFriction.staticMy;
+                else if (isSpinning) return currentFriction.dynamicMy;
+                return currentFriction.rollingMy;
+            }
+        }
+        public float sidewayMy
+        {
+            get
+            {
+                if (totalSpeed.magnitude <= 1.0f) return currentFriction.sidewayStaticMy;
+                else if (isSpinning) return currentFriction.sidewayDynamicMy;
+                return currentFriction.rollingMy;
+            }
+        }
+
+        //**********
+        //Visuals
+        //**********
         public GameObject Visual;
 
+
+        // Debug
         public override string ToString()
         {
-            return "a: " + acceleration ;
+            return name + ": a: " + acceleration + " totalSpeed: " + totalSpeed.magnitude;
         }
 
     }
@@ -230,10 +281,19 @@ public class WheelColliderVP : MonoBehaviour {
         public float Distance = 0.3f;
         [Range(0.0f, 1.0f)] public float targetPosition = 0.5f;
 
-        public float Compression = 0.0f;
+        [HideInInspector]
+        private float compression = 0.0f;
+        public float Compression
+        {
+            get { return compression; }
+            set { compression = value; }
+        }
+        [HideInInspector]
         public float PreviousCompression = 0.0f;
 
+        [HideInInspector]
         public float Force = 0.0f;
+        [HideInInspector]
         public float DampingForce = 0.0f;
 
         public float TotalForce
@@ -253,22 +313,31 @@ public class WheelColliderVP : MonoBehaviour {
 
         public string name = "DefaultFriction";
 
+        [Header("Friction Coefficient")]
         // Forward
-        public float staticMy = 0.8f;
-        public float rollingMy = 0.3f;
-        public float dynamicMy = 0.7f;
+        [Header("Forward")]
+        public float staticMy = 0.7f;
+        public float rollingMy = 0.03f;
+        public float dynamicMy = 0.3f;
 
         // Sideways
-        public float lateralStaticMy = 0.3f;
-        public float lateralRollingMy = 0.1f;
-        public float lateralDynamicMy = 0.2f;
+        [Header("Sideways")]
+        public float sidewayStaticMy = 0.7f;
+        public float sidewayRollingMy = 0.7f;
+        public float sidewayDynamicMy = 0.7f;
 
 
         public static Friction[] list;
 
         public Friction()
         {
-            staticMy = .8f;
+            staticMy = .7f;
+            rollingMy = .03f;
+            dynamicMy = .3f;
+
+            sidewayStaticMy = .7f;
+            sidewayRollingMy = .7f;
+            sidewayDynamicMy = .7f;
         }
 
     }
