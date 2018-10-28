@@ -2,7 +2,7 @@
 # Created by https://www.gitignore.io/api/unity,visualstudio,visualstudiocode
 
 #Custom
-*[Aa]ssets/Imported* # For custom Assets from the store.
+[Aa]ssets/Imported* # For custom Assets from the store.
 
 ### Unity ###
 [Ll]ibrary/
