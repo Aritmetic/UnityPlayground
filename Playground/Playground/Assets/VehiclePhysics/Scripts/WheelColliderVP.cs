@@ -280,6 +280,7 @@ public class WheelColliderVP {
         public float Damper = 3500.0f;
         public float Distance = 0.3f;
         [Range(0.0f, 1.0f)] public float targetPosition = 0.5f;
+        public bool debug = false;
 
         [HideInInspector]
         private float compression = 0.0f;
@@ -298,7 +299,10 @@ public class WheelColliderVP {
 
         public float TotalForce
         {
-            get { return Force + DampingForce; }
+            get {
+                if(debug)
+                MonoBehaviour.print("Total Force: " + (Force + DampingForce));
+                return Force + DampingForce; }
         }
     }
 

@@ -55,13 +55,14 @@ public class VehicleController : MonoBehaviour {
         public float W = 2.0f;
         public float H = .3f;
         public float F = .3f;
+        public float multiplicator = 10f;
 
         public const float p = 1.255f;
         public const float pHalf = .62775f;
         
         public float GetDownForce(float v)
         {
-            return CL * pHalf * v * s;
+            return CL * pHalf * v * s * multiplicator;
             //return .5f * W * H * F * p * v;
         }
     }
