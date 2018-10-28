@@ -3,6 +3,7 @@
 
 #Custom
 [Aa]ssets/Imported* # For custom Assets from the store.
+Playground/Playground/Assets/Imported/
 
 ### Unity ###
 [Ll]ibrary/
