@@ -342,7 +342,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378237627532518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4858204825035672}
@@ -359,7 +359,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454808302885942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.28, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4495737559754358}
@@ -416,7 +416,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1586690388072702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: -0.70000005, z: -0.00000071525574}
+  m_LocalPosition: {x: 0, y: -0.7000001, z: 0.00000023841858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4276739608146798}
@@ -430,7 +430,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1257532124575380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.52, y: 2.46, z: 20.38}
+  m_LocalPosition: {x: 0, y: 3, z: 14.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4049640086812588}
@@ -473,7 +473,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1975930044132684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000023841858, y: -0.70000005, z: 0.00000071525574}
+  m_LocalPosition: {x: 0, y: -0.7000001, z: -0.00000023841858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4434930702201346}
@@ -553,7 +553,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1923058806509046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000023841858, y: -0.70000005, z: 0.00000071525574}
+  m_LocalPosition: {x: 0, y: -0.7000001, z: -0.00000023841858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4555597897987802}
@@ -580,7 +580,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601073761881666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000023841858, y: -0.70000005, z: -0.00000071525574}
+  m_LocalPosition: {x: 0, y: -0.7000001, z: 0.00000023841858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4481588288483128}
@@ -1073,24 +1073,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 54939474403208350}
   customCenterOfMass: 1
-  centerOfMass: {x: 0, y: -0.15, z: 0}
-  MaxTorque: 15000
+  centerOfMass: {x: 0, y: 0.35, z: 0}
+  steering:
+    maxSteerAngle: 40
+    degreesPerSecond: 60
+  engine:
+    minRPM: 500
+    maxRPM: 500
+    forwardGears: []
+    reverseGears: []
+  transmission:
+    targetShiftUp: 2000
+    targetShiftDown: 800
+  MaxTorque: 700
   MaxSteerAngle: 40
   frontDownForcePoint: {x: 0, y: 0, z: 0}
   frontValue: 1
   backDownForcePoint: {x: 0, y: 0, z: 0}
   backValue: 1
   axles:
-  - steerAngleMax: 0
+  - Name: Front Axle
+    steerAngleMax: 40
+    torqueCoefficient: 0
+    brakeCoefficient: 1
+    handbrakeCoefficient: 1
     leftWheel:
       WheelObject: {fileID: 1290938572531108}
       wheel:
         name: 
         mass: 25
         tireRadius: 0.5
-        width: 0.2
-        isSteerable: 0
-        affectedByMotor: 0
+        width: 0.4
+        steerAngle: 0
+        motorTorque: 0
         rpm: 0
         previousPosition: {x: 5.6477275, y: 1.43418, z: 22.072588}
         acceleration: 0
@@ -1113,10 +1128,10 @@ MonoBehaviour:
         Visual: {fileID: 1923058806509046}
       suspension:
         SpringForce: 25000
-        Damper: 3500
-        Distance: 0.3
+        Damper: 2800
+        Distance: 0.7
         targetPosition: 0.5
-        Compression: 0.36582
+        debug: 0
         PreviousCompression: 0.3658201
         Force: 5395.4995
         DampingForce: -0.020861626
@@ -1137,9 +1152,9 @@ MonoBehaviour:
         name: 
         mass: 25
         tireRadius: 0.5
-        width: 0.2
-        isSteerable: 0
-        affectedByMotor: 0
+        width: 0.4
+        steerAngle: 0
+        motorTorque: 0
         rpm: 0
         previousPosition: {x: 8.228869, y: 1.43418, z: 21.760008}
         acceleration: -0.0016957987
@@ -1162,10 +1177,10 @@ MonoBehaviour:
         Visual: {fileID: 1975930044132684}
       suspension:
         SpringForce: 25000
-        Damper: 3500
-        Distance: 0.3
+        Damper: 2800
+        Distance: 0.7
         targetPosition: 0.5
-        Compression: 0.36582
+        debug: 0
         PreviousCompression: 0.36582
         Force: 5395.4995
         DampingForce: 0
@@ -1181,17 +1196,21 @@ MonoBehaviour:
       showDebug: 0
       suspensionSlider: {fileID: 0}
     motorTorque: 0
-    steerAngle: 0
-  - steerAngleMax: 0
+    steerInput: 0
+  - Name: Rear Axle
+    steerAngleMax: 0
+    torqueCoefficient: 1
+    brakeCoefficient: 1
+    handbrakeCoefficient: 1
     leftWheel:
       WheelObject: {fileID: 1626719082738382}
       wheel:
         name: 
         mass: 25
         tireRadius: 0.5
-        width: 0.2
-        isSteerable: 0
-        affectedByMotor: 0
+        width: 0.4
+        steerAngle: 0
+        motorTorque: 0
         rpm: 0
         previousPosition: {x: 5.23897, y: 1.43418, z: 18.697248}
         acceleration: 0
@@ -1214,10 +1233,10 @@ MonoBehaviour:
         Visual: {fileID: 1601073761881666}
       suspension:
         SpringForce: 25000
-        Damper: 3500
-        Distance: 0.3
+        Damper: 2800
+        Distance: 0.7
         targetPosition: 0.5
-        Compression: 0.36582
+        debug: 0
         PreviousCompression: 0.36582
         Force: 5395.4995
         DampingForce: 0
@@ -1238,9 +1257,9 @@ MonoBehaviour:
         name: 
         mass: 25
         tireRadius: 0.5
-        width: 0.2
-        isSteerable: 0
-        affectedByMotor: 0
+        width: 0.4
+        steerAngle: 0
+        motorTorque: 0
         rpm: 0
         previousPosition: {x: 7.8201118, y: 1.43418, z: 18.384668}
         acceleration: 0
@@ -1263,10 +1282,10 @@ MonoBehaviour:
         Visual: {fileID: 1586690388072702}
       suspension:
         SpringForce: 25000
-        Damper: 3500
-        Distance: 0.3
+        Damper: 2800
+        Distance: 0.7
         targetPosition: 0.5
-        Compression: 0.36582
+        debug: 0
         PreviousCompression: 0.36582
         Force: 5395.4995
         DampingForce: 0
@@ -1282,7 +1301,7 @@ MonoBehaviour:
       showDebug: 0
       suspensionSlider: {fileID: 0}
     motorTorque: 0
-    steerAngle: 0
+    steerInput: 0
   debugText: {fileID: 0}
   downForces:
   - transform: {fileID: 4708395594635294}
@@ -1291,3 +1310,4 @@ MonoBehaviour:
     W: 2
     H: 1
     F: 1
+    multiplicator: 10
