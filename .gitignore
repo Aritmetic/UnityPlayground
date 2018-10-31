@@ -4,6 +4,7 @@
 #Custom
 [Aa]ssets/Imported* # For custom Assets from the store.
 Playground/Playground/Assets/Imported/
+Playground/Playground/Recordings/
 
 ### Unity ###
 [Ll]ibrary/
