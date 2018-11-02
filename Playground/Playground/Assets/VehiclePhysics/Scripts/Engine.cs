@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class Engine {
 
+    public float maxTorque = 1500f;
+
     public float minRPM = 500f;
     public float maxRPM = 500f;
 

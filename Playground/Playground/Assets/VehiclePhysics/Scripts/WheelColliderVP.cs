@@ -300,8 +300,14 @@ public class WheelColliderVP {
         public float TotalForce
         {
             get {
-                if(debug)
-                MonoBehaviour.print("Total Force: " + (Force + DampingForce));
+                if(debug)  MonoBehaviour.print("Total Force: " + (Force + DampingForce));
+
+                MonoBehaviour.print("Compression: " + compression);
+
+                if (Distance < compression)
+                {
+                    //return Mathf.Infinity;
+                }
                 return Force + DampingForce; }
         }
     }

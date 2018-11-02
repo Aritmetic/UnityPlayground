@@ -7,11 +7,14 @@ public class Axle {
 
     public string Name;
 
+    [Space(2)]
+
     [Range(0.0f, 90.0f)] public float steerAngleMax = 0.0f;
     [Range(0.0f, 1.0f)] public float torqueCoefficient = 1.0f;
     [Range(0.0f, 1.0f)] public float brakeCoefficient = 1.0f;
     [Range(0.0f, 1.0f)] public float handbrakeCoefficient = 1.0f;
 
+    [Space(2)]
 
     public WheelColliderVP leftWheel;
     public WheelColliderVP rightWheel;

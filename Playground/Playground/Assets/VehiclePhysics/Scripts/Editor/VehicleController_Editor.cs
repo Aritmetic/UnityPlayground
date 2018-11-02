@@ -64,21 +64,21 @@ public class VehicleController_Editor : Editor {
             );
 
         // Draw Target Position
-        Handles.color = new Color(1f, .7f, 0f);
+        Handles.color = new Color(1f, .7f, 1f);
         drawHorizontalLine(origin - up * (coll.suspension.Distance * coll.suspension.targetPosition), .1f);
 
         // Draw Wheel Collider
         Handles.color = Color.green;
         Handles.DrawWireArc(
-            suspensionTarget + coll.WheelObject.transform.right * coll.wheel.width / 2,
-            coll.WheelObject.transform.right,
+            suspensionTarget + coll.wheel.Visual.transform.right * coll.wheel.width / 2,
+            coll.wheel.Visual.transform.right,
             Vector3.up,
             360.0f,
             coll.wheel.tireRadius
         );
         Handles.DrawWireArc(
-            suspensionTarget + coll.WheelObject.transform.right * -coll.wheel.width / 2,
-            coll.WheelObject.transform.right,
+            suspensionTarget + coll.wheel.Visual.transform.right * -coll.wheel.width / 2,
+            coll.wheel.Visual.transform.right,
             Vector3.up,
             360.0f,
             coll.wheel.tireRadius

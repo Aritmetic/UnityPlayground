@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody))]
 public class VehicleController : MonoBehaviour {
 
     public new Rigidbody rigidbody;
     public bool customCenterOfMass = false;
     public Vector3 centerOfMass;
+    
+    [Space(5)]
 
     public Steering steering;
+
+    [Space(5)]
 
     public Engine engine;
 
     public Transmission transmission;
 
-    [Tooltip("SI Unit KW")]
-    public float MaxTorque = 400f;
-    public float MaxSteerAngle = 40.0f;
-
-    public Vector3 frontDownForcePoint = Vector3.zero;
-    public float frontValue = 1.0f;
-    public Vector3 backDownForcePoint = Vector3.zero;
-    public float backValue = 1.0f;
-
     public Axle[] axles;
     //public WheelColliderVP[] colls;
 
-    [Header("Debug")]
+    [Space(5)]
+
+    public Spoiler[] downForces;
+    
+    [Space(10), Header("Debug")]
     public Text debugText;
 
 	// Use this for initialization
@@ -39,36 +39,6 @@ public class VehicleController : MonoBehaviour {
         
 	}
 	
-    [System.Serializable]
-    public class Spoiler
-    {
-        // https://en.wikipedia.org/wiki/Downforce
-        // http://www.ppl-flight-training.com/lift-formula.html
-
-        public Transform transform;
-
-        [Tooltip("Co-Effiecient of Lift")]
-        public float CL = 2.0f;
-        [Tooltip("Surface Area")]
-        public float s = 2f;
-
-        public float W = 2.0f;
-        public float H = .3f;
-        public float F = .3f;
-        public float multiplicator = 10f;
-
-        public const float p = 1.255f;
-        public const float pHalf = .62775f;
-        
-        public float GetDownForce(float v)
-        {
-            return CL * pHalf * v * s * multiplicator;
-            //return .5f * W * H * F * p * v;
-        }
-    }
-
-    public Spoiler[] downForces;
-
 	// Update is called once per frame
 	void FixedUpdate() {
         rigidbody.centerOfMass = centerOfMass;
@@ -76,7 +46,7 @@ public class VehicleController : MonoBehaviour {
         float sqaureVelocity = rigidbody.velocity.magnitude * rigidbody.velocity.magnitude;
         
         float steerInput = Input.GetAxis("Horizontal");
-        float motorTorque = Input.GetAxis("Vertical") * MaxTorque;
+        float motorTorque = Input.GetAxis("Vertical") * engine.maxTorque;
 
         string t = "";
 
@@ -103,6 +73,38 @@ public class VehicleController : MonoBehaviour {
         }
 
 	}
+
+    #region Classes
+
+    [System.Serializable]
+    public class Spoiler
+    {
+        // https://en.wikipedia.org/wiki/Downforce
+        // http://www.ppl-flight-training.com/lift-formula.html
+
+        public Transform transform;
+
+        [Tooltip("Co-Effiecient of Lift")]
+        public float CL = 2.0f;
+        [Tooltip("Surface Area")]
+        public float s = 2f;
+
+        public float W = 2.0f;
+        public float H = .3f;
+        public float F = .3f;
+        public float multiplicator = 10f;
+
+        public const float p = 1.255f;
+        public const float pHalf = .62775f;
+
+        public float GetDownForce(float v)
+        {
+            return CL * pHalf * v * s * multiplicator;
+            //return .5f * W * H * F * p * v;
+        }
+    }
+
+    #endregion
 
     //[ContextMenu("Init")]
     //public void Initialize()
