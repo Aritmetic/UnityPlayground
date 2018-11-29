@@ -40,6 +40,12 @@ public class VehicleController_Editor : Editor {
 
     private void drawColl(WheelColliderVP coll)
     {
+        if(coll.wheel.Visual == null)
+        {
+            coll.wheel.Visual = coll.WheelObject.transform.GetChild(0).transform.gameObject;
+        }
+        if (coll.WheelObject == null) return;
+
         Vector3 origin = coll.WheelObject.transform.position;
         Vector3 up = coll.WheelObject.transform.up;
         Vector3 suspensionTarget = origin - coll.WheelObject.transform.up * (coll.suspension.Distance - coll.suspension.Compression);

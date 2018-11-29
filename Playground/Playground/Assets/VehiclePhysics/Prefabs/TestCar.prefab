@@ -1078,6 +1078,7 @@ MonoBehaviour:
     maxSteerAngle: 40
     degreesPerSecond: 60
   engine:
+    maxTorque: 1500
     minRPM: 500
     maxRPM: 500
     forwardGears: []
@@ -1085,12 +1086,6 @@ MonoBehaviour:
   transmission:
     targetShiftUp: 2000
     targetShiftDown: 800
-  MaxTorque: 700
-  MaxSteerAngle: 40
-  frontDownForcePoint: {x: 0, y: 0, z: 0}
-  frontValue: 1
-  backDownForcePoint: {x: 0, y: 0, z: 0}
-  backValue: 1
   axles:
   - Name: Front Axle
     steerAngleMax: 40
@@ -1302,7 +1297,6 @@ MonoBehaviour:
       suspensionSlider: {fileID: 0}
     motorTorque: 0
     steerInput: 0
-  debugText: {fileID: 0}
   downForces:
   - transform: {fileID: 4708395594635294}
     CL: 3
@@ -1311,3 +1305,4 @@ MonoBehaviour:
     H: 1
     F: 1
     multiplicator: 10
+  debugText: {fileID: 0}

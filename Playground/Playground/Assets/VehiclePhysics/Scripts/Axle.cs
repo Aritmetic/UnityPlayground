@@ -7,14 +7,28 @@ public class Axle {
 
     public string Name;
 
-    [Space(2)]
+    [Space(5)]
 
+    [Header("Steering")]
     [Range(0.0f, 90.0f)] public float steerAngleMax = 0.0f;
+
+    [Header("Engine")]
     [Range(0.0f, 1.0f)] public float torqueCoefficient = 1.0f;
+    //[Range(0.0f, 1.0f)] public float engineBrakeCoefficient = 0.0f;
+
+    [Header("Braking")]
     [Range(0.0f, 1.0f)] public float brakeCoefficient = 1.0f;
     [Range(0.0f, 1.0f)] public float handbrakeCoefficient = 1.0f;
 
-    [Space(2)]
+    [Space(5), Header("Ackermann")]
+
+    public WheelGeometry geometry;
+
+    [Space(5)]
+
+    public float GearRatio = 3f;
+    
+    [Space(5), Header("Wheels")]
 
     public WheelColliderVP leftWheel;
     public WheelColliderVP rightWheel;
@@ -29,15 +43,26 @@ public class Axle {
         leftWheel.wheel.motorTorque = (motorTorque/2) * torqueCoefficient;
         rightWheel.wheel.motorTorque = (motorTorque/2) * torqueCoefficient;
 
-        leftWheel.wheel.steerAngle = steerInput * steerAngleMax;
-        rightWheel.wheel.steerAngle = steerInput * steerAngleMax;
-
-
+        leftWheel.wheel.steerAngle = getAckermannAngle(leftWheel.WheelObject.transform.localPosition.x, steerInput * steerAngleMax);
+        rightWheel.wheel.steerAngle = getAckermannAngle(rightWheel.WheelObject.transform.localPosition.x, steerInput * steerAngleMax);
+        
         leftWheel.FixedUpdate();
         rightWheel.FixedUpdate();
 
     }
 
+    private float getAckermannAngle(float length, float steerAngle)
+    {
+        if (steerAngle.Equals(0f)) return 0f;
+        
+        float alpha = 90 - Mathf.Abs(steerAngle);
+
+        float b = (geometry.ackermann * Mathf.Sin(alpha * Mathf.Deg2Rad)) / Mathf.Sin(steerAngle * Mathf.Deg2Rad);
+
+        return Mathf.Atan( (geometry.ackermann / ( b - length ))) * Mathf.Rad2Deg;
+    }
+
+    // used as init
     public void setRigidbody(Rigidbody rb)
     {
         leftWheel.rigidbody = rb;
