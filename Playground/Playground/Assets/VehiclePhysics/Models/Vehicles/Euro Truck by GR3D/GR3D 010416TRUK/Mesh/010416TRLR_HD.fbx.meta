@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: ff1ba9d99dd6f844493f8d04cb30bbf1
+timeCreated: 1459371517
+licenseType: Store
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: door left
+    100004: door right
+    100006: license plate rear
+    100008: suspension
+    100010: trailer
+    100012: trailer interior
+    100014: trailer jacks
+    100016: under boxes
+    100018: 'Whl HD RL TR1 '
+    100020: Whl HD RL TR2
+    100022: Whl HD RL TR3
+    100024: Whl HD RR TR1
+    100026: Whl HD RR TR2
+    100028: Whl HD RR TR3
+    400000: //RootNode
+    400002: door left
+    400004: door right
+    400006: license plate rear
+    400008: suspension
+    400010: trailer
+    400012: trailer interior
+    400014: trailer jacks
+    400016: under boxes
+    400018: 'Whl HD RL TR1 '
+    400020: Whl HD RL TR2
+    400022: Whl HD RL TR3
+    400024: Whl HD RR TR1
+    400026: Whl HD RR TR2
+    400028: Whl HD RR TR3
+    2300000: door left
+    2300002: door right
+    2300004: license plate rear
+    2300006: suspension
+    2300008: trailer
+    2300010: trailer interior
+    2300012: trailer jacks
+    2300014: under boxes
+    2300016: 'Whl HD RL TR1 '
+    2300018: Whl HD RL TR2
+    2300020: Whl HD RL TR3
+    2300022: Whl HD RR TR1
+    2300024: Whl HD RR TR2
+    2300026: Whl HD RR TR3
+    3300000: door left
+    3300002: door right
+    3300004: license plate rear
+    3300006: suspension
+    3300008: trailer
+    3300010: trailer interior
+    3300012: trailer jacks
+    3300014: under boxes
+    3300016: 'Whl HD RL TR1 '
+    3300018: Whl HD RL TR2
+    3300020: Whl HD RL TR3
+    3300022: Whl HD RR TR1
+    3300024: Whl HD RR TR2
+    3300026: Whl HD RR TR3
+    4300000: trailer
+    4300002: trailer jacks
+    4300004: suspension
+    4300006: 'Whl HD RL TR1 '
+    4300008: Whl HD RL TR2
+    4300010: Whl HD RR TR2
+    4300012: Whl HD RR TR1
+    4300014: door right
+    4300016: under boxes
+    4300018: Whl HD RR TR3
+    4300020: Whl HD RL TR3
+    4300022: door left
+    4300024: trailer interior
+    4300026: license plate rear
+    7400000: modo_Anim
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.8
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

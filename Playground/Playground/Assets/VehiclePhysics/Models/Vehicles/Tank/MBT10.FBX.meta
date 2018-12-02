@@ -1,0 +1,301 @@
+fileFormatVersion: 2
+guid: e2cc9389453cc2845820c7e8cd8dbfab
+timeCreated: 1518879346
+licenseType: Store
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Antena L
+    100002: Antena R
+    100004: Body
+    100006: Headlight Mesh
+    100008: L1
+    100010: L2
+    100012: L3
+    100014: L4
+    100016: L5
+    100018: L6
+    100020: L7
+    100022: Main Gun
+    100024: //RootNode
+    100026: MG
+    100028: MG_support
+    100030: Object098
+    100032: R1
+    100034: R2
+    100036: R3
+    100038: R4
+    100040: R5
+    100042: R6
+    100044: R7
+    100046: Track_L
+    100048: Track_R
+    100050: Turret
+    100052: Turret Mesh
+    100054: Wheel arm L1
+    100056: Wheel arm L2
+    100058: Wheel arm L3
+    100060: Wheel arm L4
+    100062: Wheel arm L5
+    100064: Wheel arm L6
+    100066: Wheel arm R1
+    100068: Wheel arm R2
+    100070: Wheel arm R3
+    100072: Wheel arm R4
+    100074: Wheel arm R5
+    100076: Wheel arm R6
+    100078: Wheel L1
+    100080: Wheel L2
+    100082: Wheel L3
+    100084: Wheel L4
+    100086: Wheel L5
+    100088: Wheel L6
+    100090: Wheel L7
+    100092: Wheel R1
+    100094: Wheel R2
+    100096: Wheel R3
+    100098: Wheel R4
+    100100: Wheel R5
+    100102: Wheel R6
+    100104: Wheel R7
+    400000: Antena L
+    400002: Antena R
+    400004: Body
+    400006: Headlight Mesh
+    400008: L1
+    400010: L2
+    400012: L3
+    400014: L4
+    400016: L5
+    400018: L6
+    400020: L7
+    400022: Main Gun
+    400024: //RootNode
+    400026: MG
+    400028: MG_support
+    400030: Object098
+    400032: R1
+    400034: R2
+    400036: R3
+    400038: R4
+    400040: R5
+    400042: R6
+    400044: R7
+    400046: Track_L
+    400048: Track_R
+    400050: Turret
+    400052: Turret Mesh
+    400054: Wheel arm L1
+    400056: Wheel arm L2
+    400058: Wheel arm L3
+    400060: Wheel arm L4
+    400062: Wheel arm L5
+    400064: Wheel arm L6
+    400066: Wheel arm R1
+    400068: Wheel arm R2
+    400070: Wheel arm R3
+    400072: Wheel arm R4
+    400074: Wheel arm R5
+    400076: Wheel arm R6
+    400078: Wheel L1
+    400080: Wheel L2
+    400082: Wheel L3
+    400084: Wheel L4
+    400086: Wheel L5
+    400088: Wheel L6
+    400090: Wheel L7
+    400092: Wheel R1
+    400094: Wheel R2
+    400096: Wheel R3
+    400098: Wheel R4
+    400100: Wheel R5
+    400102: Wheel R6
+    400104: Wheel R7
+    2300000: Antena L
+    2300002: Antena R
+    2300004: Body
+    2300006: Headlight Mesh
+    2300008: Main Gun
+    2300010: MG
+    2300012: MG_support
+    2300014: Object098
+    2300016: Turret
+    2300018: Turret Mesh
+    2300020: Wheel arm L1
+    2300022: Wheel arm L2
+    2300024: Wheel arm L3
+    2300026: Wheel arm L4
+    2300028: Wheel arm L5
+    2300030: Wheel arm L6
+    2300032: Wheel arm R1
+    2300034: Wheel arm R2
+    2300036: Wheel arm R3
+    2300038: Wheel arm R4
+    2300040: Wheel arm R5
+    2300042: Wheel arm R6
+    2300044: Wheel L1
+    2300046: Wheel L2
+    2300048: Wheel L3
+    2300050: Wheel L4
+    2300052: Wheel L5
+    2300054: Wheel L6
+    2300056: Wheel L7
+    2300058: Wheel R1
+    2300060: Wheel R2
+    2300062: Wheel R3
+    2300064: Wheel R4
+    2300066: Wheel R5
+    2300068: Wheel R6
+    2300070: Wheel R7
+    3300000: Antena L
+    3300002: Antena R
+    3300004: Body
+    3300006: Headlight Mesh
+    3300008: Main Gun
+    3300010: MG
+    3300012: MG_support
+    3300014: Object098
+    3300016: Turret
+    3300018: Turret Mesh
+    3300020: Wheel arm L1
+    3300022: Wheel arm L2
+    3300024: Wheel arm L3
+    3300026: Wheel arm L4
+    3300028: Wheel arm L5
+    3300030: Wheel arm L6
+    3300032: Wheel arm R1
+    3300034: Wheel arm R2
+    3300036: Wheel arm R3
+    3300038: Wheel arm R4
+    3300040: Wheel arm R5
+    3300042: Wheel arm R6
+    3300044: Wheel L1
+    3300046: Wheel L2
+    3300048: Wheel L3
+    3300050: Wheel L4
+    3300052: Wheel L5
+    3300054: Wheel L6
+    3300056: Wheel L7
+    3300058: Wheel R1
+    3300060: Wheel R2
+    3300062: Wheel R3
+    3300064: Wheel R4
+    3300066: Wheel R5
+    3300068: Wheel R6
+    3300070: Wheel R7
+    4300000: Track_R
+    4300002: Body
+    4300004: Headlight Mesh
+    4300006: Wheel arm R3
+    4300008: Wheel arm R2
+    4300010: Wheel arm R1
+    4300012: Wheel arm R6
+    4300014: Wheel arm L6
+    4300016: Wheel arm L5
+    4300018: Wheel arm L4
+    4300020: Wheel arm L1
+    4300022: Wheel arm L2
+    4300024: Wheel arm L3
+    4300026: Wheel R7
+    4300028: Wheel R5
+    4300030: Wheel L5
+    4300032: Wheel L2
+    4300034: Wheel L6
+    4300036: Wheel R1
+    4300038: Wheel R3
+    4300040: Wheel L7
+    4300042: Wheel R4
+    4300044: Wheel R6
+    4300046: Wheel arm R4
+    4300048: Wheel arm R5
+    4300050: Wheel L1
+    4300052: Wheel R2
+    4300054: Wheel L4
+    4300056: Wheel L3
+    4300058: Turret
+    4300060: MG_support
+    4300062: MG
+    4300064: Antena R
+    4300066: Antena L
+    4300068: Turret Mesh
+    4300070: Main Gun
+    4300072: Object098
+    4300074: Track_L
+    9500000: //RootNode
+    13700000: Track_L
+    13700002: Track_R
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.52
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

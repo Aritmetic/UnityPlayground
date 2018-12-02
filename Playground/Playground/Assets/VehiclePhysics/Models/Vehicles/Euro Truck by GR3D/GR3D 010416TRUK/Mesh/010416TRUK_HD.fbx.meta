@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: 9817eabadfb74f04abda4bd5329b9138
+timeCreated: 1517700369
+licenseType: Store
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: body chassis
+    100004: cabin top
+    100006: door rt
+    100008: doors lft
+    100010: interior
+    100012: license plate front
+    100014: license plate rear
+    100016: mirror lft
+    100018: mirror rt
+    100020: steering wheel
+    100022: Whl HD FL
+    100024: Whl HD FR
+    100026: Whl HD RL
+    100028: Whl HD RR
+    400000: //RootNode
+    400002: body chassis
+    400004: cabin top
+    400006: door rt
+    400008: doors lft
+    400010: interior
+    400012: license plate front
+    400014: license plate rear
+    400016: mirror lft
+    400018: mirror rt
+    400020: steering wheel
+    400022: Whl HD FL
+    400024: Whl HD FR
+    400026: Whl HD RL
+    400028: Whl HD RR
+    2300000: body chassis
+    2300002: cabin top
+    2300004: door rt
+    2300006: doors lft
+    2300008: interior
+    2300010: license plate front
+    2300012: license plate rear
+    2300014: mirror lft
+    2300016: mirror rt
+    2300018: steering wheel
+    2300020: Whl HD FL
+    2300022: Whl HD FR
+    2300024: Whl HD RL
+    2300026: Whl HD RR
+    3300000: body chassis
+    3300002: cabin top
+    3300004: door rt
+    3300006: doors lft
+    3300008: interior
+    3300010: license plate front
+    3300012: license plate rear
+    3300014: mirror lft
+    3300016: mirror rt
+    3300018: steering wheel
+    3300020: Whl HD FL
+    3300022: Whl HD FR
+    3300024: Whl HD RL
+    3300026: Whl HD RR
+    4300000: Whl HD RR
+    4300002: Whl HD FL
+    4300004: Whl HD RL
+    4300006: Whl HD FR
+    4300008: interior
+    4300010: steering wheel
+    4300012: doors lft
+    4300014: door rt
+    4300016: body chassis
+    4300018: license plate front
+    4300020: license plate rear
+    4300022: mirror lft
+    4300024: mirror rt
+    4300026: cabin top
+    7400000: modo_Anim
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.8
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

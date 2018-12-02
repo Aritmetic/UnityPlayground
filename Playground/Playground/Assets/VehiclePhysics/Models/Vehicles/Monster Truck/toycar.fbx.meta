@@ -1,0 +1,246 @@
+fileFormatVersion: 2
+guid: 225fb42222efcca44b192d0db931932f
+timeCreated: 1510252713
+licenseType: Store
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: b_l_SubbMition_JNT
+    100002: B_L_wheel_GroundOFFgrp
+    100004: B_L_wheel_OFFgrp
+    100006: B_L_wheel_Ploc
+    100008: B_L_wheelCtrl
+    100010: B_L_wheelGrp
+    100012: B_L_wheelGrpAuto
+    100014: b_r_SubbMition_JNT
+    100016: B_R_wheel_GroundOFFgrp
+    100018: B_R_wheel_OFFgrp
+    100020: B_R_wheel_Ploc
+    100022: B_R_wheelCtrl
+    100024: B_R_wheelGrp
+    100026: B_R_wheelGrpAuto
+    100028: b_SubbMition_JNT
+    100030: B_suspensionCtrl
+    100032: B_suspensionGrp
+    100034: B_wheelsCtrl
+    100036: Body_grb
+    100038: bodyGrp
+    100040: CarBody_JNT
+    100042: f_l_SubbMition_JNT
+    100044: F_L_wheel_GroundOFFgrp
+    100046: F_L_wheel_OFFgrp
+    100048: F_L_wheel_Ploc
+    100050: F_L_wheelAuto
+    100052: F_L_wheelCtrl
+    100054: F_L_wheelGrp
+    100056: f_r_SubbMition_JNT
+    100058: F_R_wheel_GroundOFFgrp
+    100060: F_R_wheel_OFFgrp
+    100062: F_R_wheel_Ploc
+    100064: F_R_wheelCtrl
+    100066: F_R_wheelGrp
+    100068: F_R_wheelGrpAuto
+    100070: f_SubbMition_JNT
+    100072: F_suspensionCtrl
+    100074: F_suspensionGrp
+    100076: F_wheelsCtrl
+    100078: lift_aim_to_right_back
+    100080: lift_aim_to_right_front
+    100082: MainBody
+    100084: mainSuspension_PlanceGrp
+    100086: mainSuspensionCtrl
+    100088: Right_aim_to_lift_back
+    100090: Right_aim_to_lift_front
+    100092: Shake
+    100094: Shake1
+    100096: Stable
+    100098: submition_b_grp
+    100100: submition_f_grp
+    100102: //RootNode
+    100104: ToyCar_Fireball
+    100106: ToyCar_FireballGeo
+    100108: ToyCar_FireballGlobal_OFFgrp
+    100110: ToyCar_FireballGlobalCtrl
+    100112: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_B_L
+    100114: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_B_R
+    100116: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_F_L
+    100118: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_F_R
+    100120: ToyCar_FireballMoverCtrl
+    100122: ToyCar_FireballRig
+    100124: wheel_b_l_grp
+    100126: wheel_b_l_grp_Autogrp
+    100128: wheel_b_l_grp_grp
+    100130: wheel_b_r_Autogrp
+    100132: wheel_b_r_gyo
+    100134: wheel_b_r_gyo_grp
+    100136: wheel_f_l_Autogrp
+    100138: wheel_f_l_gyo
+    100140: wheel_f_l_gyo_grp
+    100142: wheel_f_r_Autogrp
+    100144: wheel_f_r_gyo
+    100146: wheel_f_r_gyo_grp
+    400000: b_l_SubbMition_JNT
+    400002: B_L_wheel_GroundOFFgrp
+    400004: B_L_wheel_OFFgrp
+    400006: B_L_wheel_Ploc
+    400008: B_L_wheelCtrl
+    400010: B_L_wheelGrp
+    400012: B_L_wheelGrpAuto
+    400014: b_r_SubbMition_JNT
+    400016: B_R_wheel_GroundOFFgrp
+    400018: B_R_wheel_OFFgrp
+    400020: B_R_wheel_Ploc
+    400022: B_R_wheelCtrl
+    400024: B_R_wheelGrp
+    400026: B_R_wheelGrpAuto
+    400028: b_SubbMition_JNT
+    400030: B_suspensionCtrl
+    400032: B_suspensionGrp
+    400034: B_wheelsCtrl
+    400036: Body_grb
+    400038: bodyGrp
+    400040: CarBody_JNT
+    400042: f_l_SubbMition_JNT
+    400044: F_L_wheel_GroundOFFgrp
+    400046: F_L_wheel_OFFgrp
+    400048: F_L_wheel_Ploc
+    400050: F_L_wheelAuto
+    400052: F_L_wheelCtrl
+    400054: F_L_wheelGrp
+    400056: f_r_SubbMition_JNT
+    400058: F_R_wheel_GroundOFFgrp
+    400060: F_R_wheel_OFFgrp
+    400062: F_R_wheel_Ploc
+    400064: F_R_wheelCtrl
+    400066: F_R_wheelGrp
+    400068: F_R_wheelGrpAuto
+    400070: f_SubbMition_JNT
+    400072: F_suspensionCtrl
+    400074: F_suspensionGrp
+    400076: F_wheelsCtrl
+    400078: lift_aim_to_right_back
+    400080: lift_aim_to_right_front
+    400082: MainBody
+    400084: mainSuspension_PlanceGrp
+    400086: mainSuspensionCtrl
+    400088: Right_aim_to_lift_back
+    400090: Right_aim_to_lift_front
+    400092: Shake
+    400094: Shake1
+    400096: Stable
+    400098: submition_b_grp
+    400100: submition_f_grp
+    400102: //RootNode
+    400104: ToyCar_Fireball
+    400106: ToyCar_FireballGeo
+    400108: ToyCar_FireballGlobal_OFFgrp
+    400110: ToyCar_FireballGlobalCtrl
+    400112: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_B_L
+    400114: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_B_R
+    400116: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_F_L
+    400118: ToyCar_FireballGlobalCtrl_wheel_GroundPloc_F_R
+    400120: ToyCar_FireballMoverCtrl
+    400122: ToyCar_FireballRig
+    400124: wheel_b_l_grp
+    400126: wheel_b_l_grp_Autogrp
+    400128: wheel_b_l_grp_grp
+    400130: wheel_b_r_Autogrp
+    400132: wheel_b_r_gyo
+    400134: wheel_b_r_gyo_grp
+    400136: wheel_f_l_Autogrp
+    400138: wheel_f_l_gyo
+    400140: wheel_f_l_gyo_grp
+    400142: wheel_f_r_Autogrp
+    400144: wheel_f_r_gyo
+    400146: wheel_f_r_gyo_grp
+    2300000: wheel_b_l_grp
+    2300002: wheel_b_r_gyo
+    2300004: wheel_f_l_gyo
+    2300006: wheel_f_r_gyo
+    3300000: wheel_b_l_grp
+    3300002: wheel_b_r_gyo
+    3300004: wheel_f_l_gyo
+    3300006: wheel_f_r_gyo
+    4300000: MainBody
+    4300002: wheel_f_l_gyo
+    4300004: wheel_b_l_grp
+    4300006: wheel_f_r_gyo
+    4300008: wheel_b_r_gyo
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: MainBody
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 35
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

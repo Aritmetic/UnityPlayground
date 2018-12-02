@@ -1,0 +1,281 @@
+fileFormatVersion: 2
+guid: 562d932096157b7419c7b0df07bc1c9d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: body
+    100004: brake_disk
+    100006: brake_disk.001
+    100008: brake_disk.002
+    100010: brake_disk.003
+    100012: door_left
+    100014: door_left_glass
+    100016: door_right
+    100018: door_right_glass
+    100020: glass
+    100022: interior
+    100024: lights.001
+    100026: other materials
+    100028: rim_3
+    100030: rim_3.001
+    100032: rim_3.002
+    100034: rim_3.003
+    100036: Side
+    100038: Side.001
+    100040: Side.002
+    100042: Side.003
+    100044: spring_front_left
+    100046: spring_front_left.001
+    100048: spring_front_right
+    100050: spring_front_right.001
+    100052: steering wheel
+    100054: under the car
+    100056: wheelmount_front_left
+    100058: wheelmount_front_left.001
+    100060: wheelmount_front_right
+    100062: wheelmount_front_right.001
+    400000: //RootNode
+    400002: body
+    400004: brake_disk
+    400006: brake_disk.001
+    400008: brake_disk.002
+    400010: brake_disk.003
+    400012: door_left
+    400014: door_left_glass
+    400016: door_right
+    400018: door_right_glass
+    400020: glass
+    400022: interior
+    400024: lights.001
+    400026: other materials
+    400028: rim_3
+    400030: rim_3.001
+    400032: rim_3.002
+    400034: rim_3.003
+    400036: Side
+    400038: Side.001
+    400040: Side.002
+    400042: Side.003
+    400044: spring_front_left
+    400046: spring_front_left.001
+    400048: spring_front_right
+    400050: spring_front_right.001
+    400052: steering wheel
+    400054: under the car
+    400056: wheelmount_front_left
+    400058: wheelmount_front_left.001
+    400060: wheelmount_front_right
+    400062: wheelmount_front_right.001
+    2300000: body
+    2300002: brake_disk
+    2300004: brake_disk.001
+    2300006: brake_disk.002
+    2300008: brake_disk.003
+    2300010: door_left
+    2300012: door_left_glass
+    2300014: door_right
+    2300016: door_right_glass
+    2300018: glass
+    2300020: interior
+    2300022: lights.001
+    2300024: other materials
+    2300026: rim_3
+    2300028: rim_3.001
+    2300030: rim_3.002
+    2300032: rim_3.003
+    2300034: Side
+    2300036: Side.001
+    2300038: Side.002
+    2300040: Side.003
+    2300042: spring_front_left
+    2300044: spring_front_left.001
+    2300046: spring_front_right
+    2300048: spring_front_right.001
+    2300050: steering wheel
+    2300052: under the car
+    2300054: wheelmount_front_left
+    2300056: wheelmount_front_left.001
+    2300058: wheelmount_front_right
+    2300060: wheelmount_front_right.001
+    3300000: body
+    3300002: brake_disk
+    3300004: brake_disk.001
+    3300006: brake_disk.002
+    3300008: brake_disk.003
+    3300010: door_left
+    3300012: door_left_glass
+    3300014: door_right
+    3300016: door_right_glass
+    3300018: glass
+    3300020: interior
+    3300022: lights.001
+    3300024: other materials
+    3300026: rim_3
+    3300028: rim_3.001
+    3300030: rim_3.002
+    3300032: rim_3.003
+    3300034: Side
+    3300036: Side.001
+    3300038: Side.002
+    3300040: Side.003
+    3300042: spring_front_left
+    3300044: spring_front_left.001
+    3300046: spring_front_right
+    3300048: spring_front_right.001
+    3300050: steering wheel
+    3300052: under the car
+    3300054: wheelmount_front_left
+    3300056: wheelmount_front_left.001
+    3300058: wheelmount_front_right
+    3300060: wheelmount_front_right.001
+    4300000: body
+    4300002: brake_disk
+    4300004: brake_disk.001
+    4300006: brake_disk.002
+    4300008: brake_disk.003
+    4300010: door_left
+    4300012: door_left_glass
+    4300014: door_right
+    4300016: door_right_glass
+    4300018: glass
+    4300020: interior
+    4300022: lights.001
+    4300024: other materials
+    4300026: rim_3
+    4300028: rim_3.001
+    4300030: rim_3.002
+    4300032: rim_3.003
+    4300034: Side
+    4300036: Side.001
+    4300038: Side.002
+    4300040: Side.003
+    4300042: spring_front_left
+    4300044: spring_front_left.001
+    4300046: spring_front_right
+    4300048: spring_front_right.001
+    4300050: steering wheel
+    4300052: under the car
+    4300054: wheelmount_front_left
+    4300056: wheelmount_front_left.001
+    4300058: wheelmount_front_right
+    4300060: wheelmount_front_right.001
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tire_Tire.psd.000
+    second: {fileID: 2100000, guid: 10b2c30594ff4c2439cc155d1ad29c0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body.001
+    second: {fileID: 2100000, guid: 9992eb98df753e342adf1c7c83f4267b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brakes.001
+    second: {fileID: 2100000, guid: f65b97c3af65e41429cd54b1e0e23452, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: galss.001
+    second: {fileID: 2100000, guid: d93a6c4bd551c6242a981b772a65fb88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lights.001
+    second: {fileID: 2100000, guid: b994f60827a9aa146acd6f5469fc7424, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: other_materilas.001
+    second: {fileID: 2100000, guid: 34a4259e621263f4e9d67076d00c9059, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rim_3.001
+    second: {fileID: 2100000, guid: 34ecd6837c32fd144b86836e87a018df, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.43
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

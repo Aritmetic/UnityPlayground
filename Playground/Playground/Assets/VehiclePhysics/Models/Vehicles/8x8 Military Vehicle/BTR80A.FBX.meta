@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: ee29c1e6bdc0941c493d39549485d11d
+timeCreated: 1504692022
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BTR_80_
+    100004: BTR_80_A
+    100006: BTR_80_B
+    100008: BTR_80_C
+    100010: BTR_80_D
+    100012: BTR_80_E
+    100014: BTR_80_M
+    100016: BTR_80_T1
+    100018: BTR_80_T2
+    100020: BTR_80_WA
+    100022: BTR_80_WA001
+    100024: BTR_80_WA002
+    100026: BTR_80_WA003
+    100028: BTR_80_WA004
+    100030: BTR_80_WA005
+    100032: BTR_80_WA006
+    100034: BTR_80_WA007
+    100036: BTR_80_WB
+    100038: BTR_80_WB001
+    100040: BTR_80_WB002
+    100042: BTR_80_WB003
+    100044: BTR_80_WB004
+    100046: BTR_80_WB005
+    100048: BTR_80_WB006
+    100050: BTR_80_WB007
+    400000: //RootNode
+    400002: BTR_80_
+    400004: BTR_80_A
+    400006: BTR_80_B
+    400008: BTR_80_C
+    400010: BTR_80_D
+    400012: BTR_80_E
+    400014: BTR_80_M
+    400016: BTR_80_T1
+    400018: BTR_80_T2
+    400020: BTR_80_WA
+    400022: BTR_80_WA001
+    400024: BTR_80_WA002
+    400026: BTR_80_WA003
+    400028: BTR_80_WA004
+    400030: BTR_80_WA005
+    400032: BTR_80_WA006
+    400034: BTR_80_WA007
+    400036: BTR_80_WB
+    400038: BTR_80_WB001
+    400040: BTR_80_WB002
+    400042: BTR_80_WB003
+    400044: BTR_80_WB004
+    400046: BTR_80_WB005
+    400048: BTR_80_WB006
+    400050: BTR_80_WB007
+    2300000: BTR_80_
+    2300002: BTR_80_A
+    2300004: BTR_80_B
+    2300006: BTR_80_C
+    2300008: BTR_80_D
+    2300010: BTR_80_E
+    2300012: BTR_80_M
+    2300014: BTR_80_T1
+    2300016: BTR_80_T2
+    2300018: BTR_80_WA
+    2300020: BTR_80_WA001
+    2300022: BTR_80_WA002
+    2300024: BTR_80_WA003
+    2300026: BTR_80_WA004
+    2300028: BTR_80_WA005
+    2300030: BTR_80_WA006
+    2300032: BTR_80_WA007
+    2300034: BTR_80_WB
+    2300036: BTR_80_WB001
+    2300038: BTR_80_WB002
+    2300040: BTR_80_WB003
+    2300042: BTR_80_WB004
+    2300044: BTR_80_WB005
+    2300046: BTR_80_WB006
+    2300048: BTR_80_WB007
+    3300000: BTR_80_
+    3300002: BTR_80_A
+    3300004: BTR_80_B
+    3300006: BTR_80_C
+    3300008: BTR_80_D
+    3300010: BTR_80_E
+    3300012: BTR_80_M
+    3300014: BTR_80_T1
+    3300016: BTR_80_T2
+    3300018: BTR_80_WA
+    3300020: BTR_80_WA001
+    3300022: BTR_80_WA002
+    3300024: BTR_80_WA003
+    3300026: BTR_80_WA004
+    3300028: BTR_80_WA005
+    3300030: BTR_80_WA006
+    3300032: BTR_80_WA007
+    3300034: BTR_80_WB
+    3300036: BTR_80_WB001
+    3300038: BTR_80_WB002
+    3300040: BTR_80_WB003
+    3300042: BTR_80_WB004
+    3300044: BTR_80_WB005
+    3300046: BTR_80_WB006
+    3300048: BTR_80_WB007
+    4300000: BTR_80_A
+    4300002: BTR_80_
+    4300004: BTR_80_T1
+    4300006: BTR_80_M
+    4300008: BTR_80_T2
+    4300010: BTR_80_WB
+    4300012: BTR_80_B
+    4300014: BTR_80_C
+    4300016: BTR_80_E
+    4300018: BTR_80_D
+    4300020: BTR_80_WA
+    4300022: BTR_80_WB001
+    4300024: BTR_80_WA001
+    4300026: BTR_80_WB002
+    4300028: BTR_80_WA002
+    4300030: BTR_80_WB003
+    4300032: BTR_80_WA003
+    4300034: BTR_80_WB004
+    4300036: BTR_80_WA004
+    4300038: BTR_80_WA005
+    4300040: BTR_80_WB005
+    4300042: BTR_80_WA006
+    4300044: BTR_80_WB006
+    4300046: BTR_80_WA007
+    4300048: BTR_80_WB007
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
