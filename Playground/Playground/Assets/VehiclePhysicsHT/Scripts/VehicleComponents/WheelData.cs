@@ -31,6 +31,8 @@ namespace VehiclePhysics {
         public Friction friction;
 
         // Hidden in Inspector
+
+        // Use to affect Wheel.
         [HideInInspector]
         public float motorTorque;
 
@@ -47,11 +49,21 @@ namespace VehiclePhysics {
         [HideInInspector]
         public Vector3 previousAcceleration = Vector3.zero;
 
+        
+        private Vector3 velocity = Vector3.zero;
         /// <summary>
         /// Z is direction the object is pointing.
         /// Velocity in m/s.
         /// </summary>
-        public Vector3 velocity = Vector3.zero;
+        public Vector3 Velocity
+        {
+            get { return velocity; }
+            set
+            {
+                previousVelocity = velocity;
+                velocity = value;
+            }
+        }
 
         /// <summary>
         /// Z is direction the object is pointing.
@@ -75,8 +87,12 @@ namespace VehiclePhysics {
         public float forwardMy
         {
             get
-            {
-                if (velocity.magnitude <= 1f) return friction.forward.Static;
+            {/*
+                if (velocity.magnitude <= 1f) Debug.Log("Static");
+                else if (isSlipping) Debug.Log("Dynamic");
+                else Debug.Log("Rolling");
+                */
+                if (Velocity.magnitude <= 1f) return friction.forward.Static;
                 else if (isSlipping) return friction.forward.Dynamic;
                 return friction.forward.Rolling;
             }
@@ -85,7 +101,7 @@ namespace VehiclePhysics {
         {
             get
             {
-                if (velocity.magnitude <= 1f) return friction.sideway.Static;
+                if (Velocity.magnitude <= 1f) return friction.sideway.Static;
                 else if (isSlipping) return friction.sideway.Dynamic;
                 return friction.sideway.Rolling;
             }
@@ -94,12 +110,12 @@ namespace VehiclePhysics {
 
         public float tireCircumfence
         {
-            get { return tireRadius * 2f * Mathf.PI; }
+            get { return 2f * tireRadius * Mathf.PI; }
         }
 
         public float rpm
         {
-            get { return velocity.z / tireCircumfence; }
+            get { return (Velocity.z / tireCircumfence) * 60f; }
         }
 
 
@@ -114,7 +130,7 @@ namespace VehiclePhysics {
 
         private void Update()
         {
-            Debug.DrawLine(transform.position, transform.position + velocity * 5f);
+            Debug.DrawLine(transform.position, transform.position + Velocity * 5f);
            
         }
 

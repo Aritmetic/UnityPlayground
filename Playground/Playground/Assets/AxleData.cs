@@ -50,8 +50,8 @@ namespace VehiclePhysics
             leftWheel.steerAngle = steerAngle * steerInput;
             rightWheel.steerAngle = steerAngle * steerInput;
 
-            leftWheel.motorTorque = motorTorque * finalRatio * torqueCoefficient;
-            rightWheel.motorTorque = motorTorque * finalRatio * torqueCoefficient;
+            leftWheel.motorTorque = (motorTorque * finalRatio) * torqueCoefficient;
+            rightWheel.motorTorque = (motorTorque * finalRatio) * torqueCoefficient;
 
             leftWheel.coll.FixedUpdate();
             rightWheel.coll.FixedUpdate();

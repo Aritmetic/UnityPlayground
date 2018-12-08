@@ -14,8 +14,6 @@ namespace VehiclePhysics
         public float lateralForce;
         public float forwardForce;
 
-        public float lastLateralForce;
-
         public override void Update()
         {
 
@@ -32,12 +30,9 @@ namespace VehiclePhysics
             data.previousAcceleration = data.acceleration;
 
             data.motorTorque = 0.0f;
-
-            if (lateralForce != 0f) lastLateralForce = lateralForce;
-
-            lateralForce = 0.0f;
-            forwardForce = 0.0f;
         }
+
+       
 
         private void UpdateSuspension()
         {
@@ -78,33 +73,60 @@ namespace VehiclePhysics
 
         private void CalculateFriction()
         {
+            lateralForce = 0.0f;
+            forwardForce = 0.0f;
+
             // Global velocity
             Vector3 velocity = (data.transform.position - data.previousPosition) / Time.fixedDeltaTime;
-           
+
             // Rotate around negativ rotation to get forward velocity on Z axis.
-            data.velocity = Quaternion.Inverse(data.visual.transform.rotation) * velocity;
+            data.Velocity = Quaternion.Inverse(data.visual.transform.rotation) * velocity;
             
-            data.acceleration = (data.velocity - data.previousVelocity) / Time.fixedDeltaTime;
+            data.acceleration = (data.Velocity - data.previousVelocity) / Time.fixedDeltaTime;
+
+            float tireForce = data.motorTorque / data.tireRadius;
+
+            Vector3 forceLimiter = Vector3.zero;
+            forceLimiter.x = (data.Velocity.x - data.previousVelocity.x) / Time.fixedDeltaTime;
+            forceLimiter.y = (data.Velocity.y - data.previousVelocity.y) / Time.fixedDeltaTime;
+            forceLimiter.z = (data.Velocity.z - data.previousVelocity.z) / Time.fixedDeltaTime;
+            
+            NormalForce = data.suspension.TotalForce; // (m * g) / 4. Force for each suspension.
+
+            // Forward
+            float forwardFriction = NormalForce * data.forwardMy;
+            
+            if (-.1f <= data.Velocity.z && data.Velocity.z <= .1f) forwardFriction = Mathf.Abs(forceLimiter.z);
+
+            forwardForce = -Mathf.Sign(data.Velocity.z) * forwardFriction;
+
+            // Lateral Friction
+            float lateralFriction = NormalForce * data.sidewayMy;
+            if (-.2f <= data.Velocity.x && data.Velocity.x <= .2f) lateralFriction = Mathf.Abs(forceLimiter.x);
+            lateralForce = -Mathf.Sign(data.Velocity.x) * lateralFriction;
 
 
-            NormalForce = data.suspension.TotalForce + Mathf.Abs(data.rigidbody.mass * Physics.gravity.y);
+            Debug.Log("^" + forwardForce + "<-->: " + lateralForce + " v: " + data.Velocity + " a: " + data.acceleration);
+            // Old Code
+            /*
+             // Lateral Friction.
+             float lateralFrictionForceMax = Mathf.Abs(.5f * NormalForce * (data.velocity.x * data.velocity.x));
+
+             float lateralFrictionForce = Mathf.Clamp(NormalForce * data.sidewayMy, 0.0f, lateralFrictionForceMax);
+
+             lateralForce = -Mathf.Sign(data.velocity.x) * lateralFrictionForce;
 
 
-            // Lateral Friction.
-            float lateralFrictionForceMax = Mathf.Abs(.5f * NormalForce * (data.velocity.x * data.velocity.x));
+             // Forward Friction.
+             float forwardFrictionForceMax = Mathf.Abs(.5f * NormalForce * (data.velocity.z * data.velocity.z));
 
-            float lateralFrictionForce = Mathf.Clamp(NormalForce * data.sidewayMy, 0.0f, lateralFrictionForceMax);
+             float forwardFirctionForce = Mathf.Clamp(NormalForce * data.forwardMy, 0.0f, forwardFrictionForceMax);
 
-            lateralForce = -Mathf.Sign(data.velocity.x) * lateralFrictionForce;
+             float motorForce = data.motorTorque / data.tireRadius;
 
-
-            // Forward Friction.
-            float forwardFrictionForceMax = Mathf.Abs(.5f * data.rigidbody.mass * (data.velocity.z * data.velocity.z));
-
-            float forwardFirctionForce = Mathf.Clamp(NormalForce * data.forwardMy, 0.0f, forwardFrictionForceMax);
-
-            forwardForce = (data.motorTorque / data.tireRadius) + -Mathf.Sign(data.velocity.z) * forwardFirctionForce;
-
+             forwardForce = -Mathf.Sign(data.velocity.z) * forwardFirctionForce + motorForce;
+             Debug.Log("Force: " + forwardForce);
+             //(data.motorTorque) / data.tireRadius*/
         }
 
         private void ApplyForces()
@@ -115,6 +137,8 @@ namespace VehiclePhysics
             // Add Friction Force
             data.rigidbody.AddForceAtPosition(lateralForce * data.visual.transform.right, data.hit.point);
             data.rigidbody.AddForceAtPosition(forwardForce * data.visual.transform.forward, data.hit.point);
+            Debug.DrawLine(data.hit.point, data.hit.point + forwardForce * data.visual.transform.forward, Color.blue);
+            Debug.DrawLine(data.hit.point, data.hit.point + lateralForce * data.visual.transform.right, Color.red);
         }
 
         public void UpdateVisuals()
@@ -142,6 +166,13 @@ namespace VehiclePhysics
         {
             data = null;
             MonoBehaviour.print("Deinit of WheelCollider.");
+        }
+
+        private int sign(float v)
+        {
+            if (v < 0) return -1;
+            else if (0 < v) return 1;
+            else return 1;
         }
 
     }

@@ -52,6 +52,8 @@ public class Friction
     // Sideways
     [Header("Sideway Coefficient")]
     public MyCoefficient sideway = new MyCoefficient();
+
+    
     
 
     public Friction()
@@ -77,6 +79,8 @@ public class Friction
         public float Static;
         public float Rolling;
         public float Dynamic;
+
+        public AnimationCurve slipAngle = new AnimationCurve();
 
         public MyCoefficient()
         {
