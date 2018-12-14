@@ -87,24 +87,28 @@ namespace VehiclePhysics
             float tireForce = data.motorTorque / data.tireRadius;
 
             Vector3 forceLimiter = Vector3.zero;
-            forceLimiter.x = (data.Velocity.x - data.previousVelocity.x) / Time.fixedDeltaTime;
-            forceLimiter.y = (data.Velocity.y - data.previousVelocity.y) / Time.fixedDeltaTime;
-            forceLimiter.z = (data.Velocity.z - data.previousVelocity.z) / Time.fixedDeltaTime;
+            forceLimiter.x = ((data.Velocity.x - data.previousVelocity.x) / Time.fixedDeltaTime) * data.rigidbody.mass;
+            forceLimiter.y = ((data.Velocity.y - data.previousVelocity.y) / Time.fixedDeltaTime) * data.rigidbody.mass;
+            forceLimiter.z = ((data.Velocity.z - data.previousVelocity.z) / Time.fixedDeltaTime) * data.rigidbody.mass;
             
             NormalForce = data.suspension.TotalForce; // (m * g) / 4. Force for each suspension.
 
             // Forward
             float forwardFriction = NormalForce * data.forwardMy;
-            
-            if (-.1f <= data.Velocity.z && data.Velocity.z <= .1f) forwardFriction = Mathf.Abs(forceLimiter.z);
+            forwardFriction = Mathf.Clamp(forwardFriction, 0f, Mathf.Abs(forceLimiter.z));
+            //if (-.1f <= data.Velocity.z && data.Velocity.z <= .1f) forwardFriction = Mathf.Abs(forceLimiter.z);
+            if (Mathf.Abs(data.Velocity.z) <= 0.01f) forwardFriction = 0.0f;
 
             forwardForce = -Mathf.Sign(data.Velocity.z) * forwardFriction;
 
             // Lateral Friction
             float lateralFriction = NormalForce * data.sidewayMy;
-            if (-.2f <= data.Velocity.x && data.Velocity.x <= .2f) lateralFriction = Mathf.Abs(forceLimiter.x);
-            lateralForce = -Mathf.Sign(data.Velocity.x) * lateralFriction;
+            //if (-.2f <= data.Velocity.x && data.Velocity.x <= .2f) lateralFriction = Mathf.Abs(forceLimiter.x);
+            lateralFriction = Mathf.Clamp(lateralFriction, 0f, Mathf.Abs(forceLimiter.x));
+            if (Mathf.Abs(data.Velocity.x) <= 0.01f) lateralFriction = 0f;
 
+            lateralForce = -Mathf.Sign(data.Velocity.x) * lateralFriction;
+            
 
             Debug.Log("^" + forwardForce + "<-->: " + lateralForce + " v: " + data.Velocity + " a: " + data.acceleration);
             // Old Code

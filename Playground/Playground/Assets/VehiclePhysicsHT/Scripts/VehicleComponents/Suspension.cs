@@ -35,8 +35,6 @@ public class Suspension
     {
         get
         {
-            if (debug) MonoBehaviour.print("Total Force: " + (Force + DampingForce));
-
             return Force + DampingForce;
         }
     }
